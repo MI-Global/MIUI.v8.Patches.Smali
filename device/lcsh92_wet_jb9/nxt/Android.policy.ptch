@@ -1,0 +1,4 @@
+appfile <android.policy.jar>;
+
+# Fix volume wake
+methodreplace "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali" ".method private isWakeKeyWhenScreenOff(I)Z" "%here%/android.policy.jar/isWakeKeyWhenScreenOff.m";

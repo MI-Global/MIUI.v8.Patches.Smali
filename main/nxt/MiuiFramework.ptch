@@ -1,0 +1,7 @@
+appfile <MiuiFramework.apk>;
+
+# Free themes
+methodreplace "%smali%/smali/miui/drm/ThemeReceiver.smali" ".method private validateTheme(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z" "%here%/Themes/validateTheme.m";
+replaceinfile "%smali%/miui/drm/ThemeReceiver.smali" "return v6" "const/4 v6, 0x1\n\n    return v6";
+replaceinfile "%smali%/miui/drm/ThemeReceiver$1.smali" "    :cond_0" "    :cond_0\n\n    :goto_0";
+replaceinfile "%smali%/miui/drm/ThemeReceiver$1.smali" "if-nez v2, :cond_0" "goto :goto_0";

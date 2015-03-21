@@ -1,0 +1,4 @@
+appfile <Mms.apk>;
+
+# SMS chars counter
+replaceinfile "%smali%/com/android/mms/ui/MessageEditableActivityBase.smali" "invoke-virtual {v12}, Landroid/widget/EditText;->getLineCount()I\n\n    move-result v12\n\n    const/4 v13, 0x2" "invoke-virtual {v12}, Landroid/widget/EditText;->getLineCount()I\n\n    move-result v12\n\n    const/4 v13, 0x1";

@@ -1,0 +1,15 @@
+appfile <Settings.apk>;
+
+# OTA Updater (phone will not boot without com.android.updater application
+#replaceinfile "%smali%/com/android/settings/MiuiDeviceInfoSettings.smali" "com.android.updater" "com.otaupdater";
+#replaceinfile "%smali%/com/android/settings/MiuiDeviceInfoSettings.smali" "MainActivity" "OTAUpdaterActivity";
+
+# XML Patches
+# 4PDA icon for Bormental's ROM
+replaceinfile "%smali%/../res/xml/settings_headers.xml" "<header android:id="@id/wireless_section" "<header android:icon="@drawable/ic_4pda_settings" android:id="@id/manufacturer_settings">\n        <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.StockSettings" />\n    </header>\n    <header android:id="@id/wireless_section";
+
+# Personal settings category name
+replaceinfile "%smali%/../res/xml/settings_headers.xml" "<header android:id="@id/personal_section" />" "<header android:id="@id/personal_section" android:title="@string/header_category_personal" />";
+
+# Add print settings to "Other settings"
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml" "HandyModeFragment" />" "HandyModeFragment" />\n    <Preference android:title="@string/print_settings" >\n            <intent android:action="android.settings.ACTION_PRINT_SETTINGS" />\n    </Preference>";

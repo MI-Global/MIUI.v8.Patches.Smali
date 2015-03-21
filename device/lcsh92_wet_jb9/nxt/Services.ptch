@@ -1,0 +1,29 @@
+appfile <Services.jar>;
+
+# Disable signatures comparation
+methodreplace "%smali%/com/android/server/pm/PackageManagerService.smali" ".method static compareSignatures([Landroid/content/pm/Signature;[Landroid/content/pm/Signature;)I" "%here%/Services.jar/compareSignatures.m";
+
+# Fix ShutDown issue
+methodreplace "%smali%/com/android/server/power/ShutdownThread.smali" ".method public static rebootOrShutdown(ZLjava/lang/String;)V" "%here%/Services.jar/rebootOrShutdown.m";
+
+# Notification priority
+replaceinfile "%smali%/com/android/server/NotificationManagerService.smali" "const/16 v17, 0x4" "const/16 v17, 0x3";
+
+# LED color when charging
+copyfile "%here%/Services.jar/BatteryService$Led.smali" "%smali%/com/android/server/BatteryService$Led.smali";
+
+# Disable self protection
+replaceinfile "%smali%/com/miui/server/SecurityManagerService.smali" "com.android.updater" "com.otaupdater";
+#methodreplace "%smali%/com/miui/server/SecurityManagerService.smali" ".method private checkSystemSelfProtection()V" "%here%/Services.jar/checkSystemSelfProtection.m";
+
+# CRT
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" "const-wide/16 v1, 0x0" "const-wide/16 v1, 0x190";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" ".field private static final ELECTRON_BEAM_OFF_ANIMATION_DURATION_MILLIS:I = 0x0" ".field private static final ELECTRON_BEAM_OFF_ANIMATION_DURATION_MILLIS:I = 0x190";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" "    :cond_27" "    :cond_27\n    iget-object v6, p0, Lcom/android/server/power/DisplayPowerController;->mPowerState:Lcom/android/server/power/DisplayPowerState;";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" "iget-object v6, p0, Lcom/android/server/power/DisplayPowerController;->mPowerState:Lcom/android/server/power/DisplayPowerState;\n\n    iget-boolean v8, p0, Lcom/android/server/power/DisplayPowerController;->mElectronBeamFadesConfig:Z\n\n    if-eqz v8, :cond_27" "iget-object v6, p0, Lcom/android/server/power/DisplayPowerController;->mContext:Landroid/content/Context;\n\n    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;\n\n    move-result-object v6\n\n    const-string v8, "allow_crt_lockscreen"\n\n    const/4 v10, 0x0\n\n    invoke-static {v6, v8, v10}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I\n\n    move-result v6\n\n    if-nez v6, :cond_27";
+
+# Fix mounting
+copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
+
+# Faster autobrightness
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x28" "0x3c";
