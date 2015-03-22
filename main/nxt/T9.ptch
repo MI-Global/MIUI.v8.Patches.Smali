@@ -1,3 +1,5 @@
 appfile <ContactsProvider.apk>;
+
+# Cyrillic T9 search in dialer
 replaceinfile "%smali%/com/android/providers/contacts/t9/T9Builder.smali" "T9Utils;->formatCharToT9(C)C" "T9russian;->formatCharToT9(C)C";
 copyfile "%here%/T9/T9russian.smali" "%smali%/com/android/providers/contacts/t9/T9russian.smali";
