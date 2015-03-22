@@ -1,0 +1,8 @@
+appfile <ContactsProvider.apk>;
+
+# Cyrillic T9 search in dialer
+replaceinfile "%smali%/com/android/providers/contacts/t9/T9Builder.smali" "T9Utils;->formatCharToT9(C)C" "T9russian;->formatCharToT9(C)C";
+copyfile "%here%/ContactsProvider.apk/T9russian.smali" "%smali%/com/android/providers/contacts/t9/T9russian.smali";
+
+# Sorting by FIO with ro.mi-global.sorting.fio=1 parameter in build.prop
+methodreplace "%smali%/com/android/providers/contacts/NameSplitter.smali" ".method public join(Lcom/android/providers/contacts/NameSplitter$Name;ZZ)Ljava/lang/String;" "%here%/ContactsProvider.apk/fio_sorting.m";
