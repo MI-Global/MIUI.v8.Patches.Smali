@@ -1,4 +1,4 @@
 appfile <InCallUI.apk>;
 
-# CallerID multiline
-replaceinfile "%smali%/../res/layout/single_call_info.xml" "android:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"/>" "d:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:gravity="center"/>";
+# CallerID MultiLine
+replaceinfile "%smali%/../res/layout/single_call_info.xml" "android:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"" "android:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:gravity="center"";
