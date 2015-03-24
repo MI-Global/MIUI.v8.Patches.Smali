@@ -6,5 +6,18 @@ methodreplace "%smali%/com/android/server/power/ShutdownThread.smali" ".method p
 # Fix mounting
 copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
 
-# Faster autobrightness changing
-replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x28" "0x3c";
+# Lower autobrightness delay time
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0xfa0L" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0x7d0L";
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "DARKENING_LIGHT_DEBOUNCE:J = 0xfa0L" "DARKENING_LIGHT_DEBOUNCE:J = 0x7d0L";
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "const-wide/16 v11, 0xfa0" "const-wide/16 v11, 0x7d0";
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "waiting for 4000 ms" "waiting for 2000 ms";
+
+############################ Smooth autobrightness animation #################################
+# BRIGHTNESS_RAMP_RATE_SLOW
+#replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x28" "0x50";
+# BRIGHTNESS_RAMP_RATE_SLOW
+#replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "const/16 v6, 0xc8" "const/16 v6, 0x12c";
+# LONG_TERM_AVERAGE_LIGHT_TIME_CONSTANT
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x1f4" "0xfa";
+# SHORT_TERM_AVERAGE_LIGHT_TIME_CONSTANT
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "const-wide/16 v4, 0x64" "const-wide/16 v4, 0x32";
