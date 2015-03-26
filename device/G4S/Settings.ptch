@@ -1,5 +1,0 @@
-appfile <Settings.apk>;
-
-# Change custom OTA Updater
-replaceinfile "%smali%/com/android/settings/MiuiDeviceInfoSettings.smali" "com.android.updater" "com.otaupdater";
-replaceinfile "%smali%/com/android/settings/MiuiDeviceInfoSettings.smali" "MainActivity" "OTAUpdaterActivity";

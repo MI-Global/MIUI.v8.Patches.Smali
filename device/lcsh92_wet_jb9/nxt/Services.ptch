@@ -1,7 +1,7 @@
 appfile <Services.jar>;
 
 # Fix ShutDown issue
-methodreplace "%smali%/com/android/server/power/ShutdownThread.smali" ".method public static rebootOrShutdown(ZLjava/lang/String;)V" "%here%/Services.jar/rebootOrShutdown.m";
+#methodreplace "%smali%/com/android/server/power/ShutdownThread.smali" ".method public static rebootOrShutdown(ZLjava/lang/String;)V" "%here%/Services.jar/rebootOrShutdown.m";
 
 # Fix mounting
 copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
