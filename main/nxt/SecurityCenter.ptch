@@ -6,5 +6,5 @@ replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".met
 replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method public constructor <init>()V" "const/4 v0, 0x1" "const/4 v0, 0x0";
 replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method public constructor <init>()V" "const/4 v0, 0x5" "const/4 v0, 0x0";
 replaceinfile "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" "add-int/lit8 v0, v0, -0x1" "add-int/lit8 v0, v0, 0x0";
-replaceinall "0x7f08027f" "0x7f08027a";
-replaceinall "0x7f08027e" "0x7f08027b";
+replaceinall "0x7f08027f" "0x7f08027b";
+replaceinall "0x7f08027e" "0x7f08027a";
