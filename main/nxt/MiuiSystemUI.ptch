@@ -1,0 +1,4 @@
+appfile <MiuiSystemUI.apk>;
+
+# Enabling/Disabling sound when charger plug on "ro.mi-global.charge.sound" in build.prop
+methodreplace "%smali%/com/android/systemui/power/PowerUI.smali" ".method playBatterySound(Landroid/net/Uri;)V" "%here%/MiuiSystemUI.apk/playBatterySound.m";
