@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Add proxy settings in developer settings
+replaceinfile "%smali%/../res/xml/development_prefs.xml" "    <PreferenceScreen android:title="@string/process_stats_summary_title" android:key="proc_stats" android:summary="@string/process_stats_summary" android:fragment="com.android.settings.applications.ProcessStatsUi" />" "    <PreferenceScreen android:title="@string/process_stats_summary_title" android:key="proc_stats" android:summary="@string/process_stats_summary" android:fragment="com.android.settings.applications.ProcessStatsUi" />\n    <PreferenceScreen android:title="@string/proxy_settings_label" android:key="proxy_settings" android:fragment="com.android.settings.ProxySelector" />";
