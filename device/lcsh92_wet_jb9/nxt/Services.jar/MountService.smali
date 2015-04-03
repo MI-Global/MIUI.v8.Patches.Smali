@@ -3077,22 +3077,846 @@
 .end method
 
 .method private doSDSwapVolumeUpdate()V
-    .locals 2
+    .locals 19
 
     .prologue
-    const-string v0, "MountService"
+    const-string v3, "MountService"
 
-    const-string v1, "doSDSwapVolumeUpdate"
+    const-string v4, "doSDSwapVolumeUpdate"
 
-    invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    const-string v0, "MountService"
+    move-object/from16 v0, p0
 
-    const-string v1, "MTK_2SDCARD_SWAP not enable!"
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
 
-    invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+    if-eqz v3, :cond_0
 
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    if-nez v3, :cond_1
+
+    :cond_0
+    const-string v3, "MountService"
+
+    const-string v4, "doSDSwapVolumeUpdate: mVolumePrimary == null || mVolumeSecondary == null, return!"
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    :goto_0
     return-void
+
+    :cond_1
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/MountService;->getSwapState()Z
+
+    move-result v15
+
+    .local v15, "sdSwapStatus":Z
+    move-object/from16 v0, p0
+
+    iget-boolean v3, v0, Lcom/android/server/MountService;->mFirstTime_SwapStateForSDSwapMountPoint:Z
+
+    if-nez v3, :cond_2
+
+    move-object/from16 v0, p0
+
+    iget-boolean v3, v0, Lcom/android/server/MountService;->mSwapStateForSDSwapMountPoint:Z
+
+    if-eq v15, v3, :cond_6
+
+    :cond_2
+    move-object/from16 v0, p0
+
+    iput-boolean v15, v0, Lcom/android/server/MountService;->mSwapStateForSDSwapMountPoint:Z
+
+    const/4 v3, 0x0
+
+    move-object/from16 v0, p0
+
+    iput-boolean v3, v0, Lcom/android/server/MountService;->mFirstTime_SwapStateForSDSwapMountPoint:Z
+
+    if-eqz v15, :cond_8
+
+    const-string v3, "MountService"
+
+    const-string v4, "doSDSwapVolumeUpdate: SD swap!"
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/server/MountService;->mVolumesLock:Ljava/lang/Object;
+
+    move-object/from16 v18, v0
+
+    monitor-enter v18
+
+    :try_start_0
+    new-instance v1, Landroid/os/storage/StorageVolume;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3}, Landroid/os/storage/StorageVolume;->getPathFile()Ljava/io/File;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3}, Landroid/os/storage/StorageVolume;->getDescriptionId()I
+
+    move-result v3
+
+    const/4 v4, 0x1
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v5}, Landroid/os/storage/StorageVolume;->isRemovable()Z
+
+    move-result v5
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v6}, Landroid/os/storage/StorageVolume;->isEmulated()Z
+
+    move-result v6
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v7}, Landroid/os/storage/StorageVolume;->getMtpReserveSpace()I
+
+    move-result v7
+
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v8}, Landroid/os/storage/StorageVolume;->allowMassStorage()Z
+
+    move-result v8
+
+    move-object/from16 v0, p0
+
+    iget-object v9, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v9}, Landroid/os/storage/StorageVolume;->getMaxFileSize()J
+
+    move-result-wide v9
+
+    move-object/from16 v0, p0
+
+    iget-object v11, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v11}, Landroid/os/storage/StorageVolume;->getOwner()Landroid/os/UserHandle;
+
+    move-result-object v11
+
+    invoke-direct/range {v1 .. v11}, Landroid/os/storage/StorageVolume;-><init>(Ljava/io/File;IZZZIZJLandroid/os/UserHandle;)V
+
+    .local v1, "pVolume":Landroid/os/storage/StorageVolume;
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v4}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v16
+
+    check-cast v16, Landroid/os/storage/StorageVolume;
+
+    .local v16, "tempVolume":Landroid/os/storage/StorageVolume;
+    if-eqz v16, :cond_3
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUuid()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Landroid/os/storage/StorageVolume;->setUuid(Ljava/lang/String;)V
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUserLabel()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Landroid/os/storage/StorageVolume;->setUserLabel(Ljava/lang/String;)V
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getState()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v3}, Landroid/os/storage/StorageVolume;->setState(Ljava/lang/String;)V
+
+    :cond_3
+    new-instance v2, Landroid/os/storage/StorageVolume;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3}, Landroid/os/storage/StorageVolume;->getPathFile()Ljava/io/File;
+
+    move-result-object v3
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v4}, Landroid/os/storage/StorageVolume;->getDescriptionId()I
+
+    move-result v4
+
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v6}, Landroid/os/storage/StorageVolume;->isRemovable()Z
+
+    move-result v6
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v7}, Landroid/os/storage/StorageVolume;->isEmulated()Z
+
+    move-result v7
+
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v8}, Landroid/os/storage/StorageVolume;->getMtpReserveSpace()I
+
+    move-result v8
+
+    move-object/from16 v0, p0
+
+    iget-object v9, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v9}, Landroid/os/storage/StorageVolume;->allowMassStorage()Z
+
+    move-result v9
+
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v10}, Landroid/os/storage/StorageVolume;->getMaxFileSize()J
+
+    move-result-wide v10
+
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v12}, Landroid/os/storage/StorageVolume;->getOwner()Landroid/os/UserHandle;
+
+    move-result-object v12
+
+    invoke-direct/range {v2 .. v12}, Landroid/os/storage/StorageVolume;-><init>(Ljava/io/File;IZZZIZJLandroid/os/UserHandle;)V
+
+    .local v2, "tVolume":Landroid/os/storage/StorageVolume;
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v4}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v16
+
+    .end local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    check-cast v16, Landroid/os/storage/StorageVolume;
+
+    .restart local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    if-eqz v16, :cond_4
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUuid()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/os/storage/StorageVolume;->setUuid(Ljava/lang/String;)V
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUserLabel()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/os/storage/StorageVolume;->setUserLabel(Ljava/lang/String;)V
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getState()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/os/storage/StorageVolume;->setState(Ljava/lang/String;)V
+
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    sget-object v4, Lcom/android/server/MountService;->EXTERNAL_SD1:Ljava/lang/String;
+
+    invoke-virtual {v3, v4, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    const-string v4, "/storage/sdcard1"
+
+    invoke-virtual {v3, v4, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v14
+
+    .local v14, "length":I
+    if-lez v14, :cond_5
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v3, v4, v1}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+
+    const/4 v13, 0x0
+
+    .local v13, "i":I
+    :goto_1
+    if-ge v13, v14, :cond_5
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v13}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string v4, "/storage/sdcard1"
+
+    invoke-virtual {v3, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_7
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v13, v2}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+
+    .end local v13    # "i":I
+    :cond_5
+    monitor-exit v18
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .end local v1    # "pVolume":Landroid/os/storage/StorageVolume;
+    .end local v2    # "tVolume":Landroid/os/storage/StorageVolume;
+    :goto_2
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/MountService;->mVolumesLock:Ljava/lang/Object;
+
+    monitor-enter v4
+
+    :try_start_1
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v14
+
+    const/16 v17, 0x0
+
+    .local v17, "volume":Landroid/os/storage/StorageVolume;
+    const/4 v13, 0x0
+
+    .restart local v13    # "i":I
+    :goto_3
+    if-ge v13, v14, :cond_d
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v13}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v17
+
+    .end local v17    # "volume":Landroid/os/storage/StorageVolume;
+    check-cast v17, Landroid/os/storage/StorageVolume;
+
+    .restart local v17    # "volume":Landroid/os/storage/StorageVolume;
+    move-object/from16 v0, v17
+
+    invoke-virtual {v0, v13}, Landroid/os/storage/StorageVolume;->setStorageId(I)V
+
+    const-string v3, "MountService"
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "doSDSwapVolumeUpdate  path: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " description: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mContext:Landroid/content/Context;
+
+    move-object/from16 v0, v17
+
+    invoke-virtual {v0, v6}, Landroid/os/storage/StorageVolume;->getDescription(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " removable: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->isRemovable()Z
+
+    move-result v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " emulated: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->isEmulated()Z
+
+    move-result v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " mtpReserve: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->getMtpReserveSpace()I
+
+    move-result v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " allowMassStorage: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->allowMassStorage()Z
+
+    move-result v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, " maxFileSize: "
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual/range {v17 .. v17}, Landroid/os/storage/StorageVolume;->getMaxFileSize()J
+
+    move-result-wide v6
+
+    invoke-virtual {v5, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_2
+
+    add-int/lit8 v13, v13, 0x1
+
+    goto/16 :goto_3
+
+    .end local v13    # "i":I
+    .end local v14    # "length":I
+    .end local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    .end local v17    # "volume":Landroid/os/storage/StorageVolume;
+    :cond_6
+    const-string v3, "MountService"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "doSDSwapVolumeUpdate: already update the mount point path, Just skip this. status:"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v15}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_0
+
+    .restart local v1    # "pVolume":Landroid/os/storage/StorageVolume;
+    .restart local v2    # "tVolume":Landroid/os/storage/StorageVolume;
+    .restart local v13    # "i":I
+    .restart local v14    # "length":I
+    .restart local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    :cond_7
+    add-int/lit8 v13, v13, 0x1
+
+    goto/16 :goto_1
+
+    .end local v1    # "pVolume":Landroid/os/storage/StorageVolume;
+    .end local v2    # "tVolume":Landroid/os/storage/StorageVolume;
+    .end local v13    # "i":I
+    .end local v14    # "length":I
+    .end local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    :catchall_0
+    move-exception v3
+
+    :try_start_2
+    monitor-exit v18
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw v3
+
+    :cond_8
+    const-string v3, "MountService"
+
+    const-string v4, "doSDSwapVolumeUpdate: SD NOT swap!"
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/MountService;->mVolumesLock:Ljava/lang/Object;
+
+    monitor-enter v4
+
+    :try_start_3
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v5}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v16
+
+    check-cast v16, Landroid/os/storage/StorageVolume;
+
+    .restart local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    if-eqz v16, :cond_9
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUuid()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setUuid(Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUserLabel()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setUserLabel(Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getState()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setState(Ljava/lang/String;)V
+
+    :cond_9
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v5}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v16
+
+    .end local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    check-cast v16, Landroid/os/storage/StorageVolume;
+
+    .restart local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    if-eqz v16, :cond_a
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUuid()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setUuid(Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getUserLabel()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setUserLabel(Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual/range {v16 .. v16}, Landroid/os/storage/StorageVolume;->getState()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v5}, Landroid/os/storage/StorageVolume;->setState(Ljava/lang/String;)V
+
+    :cond_a
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    sget-object v5, Lcom/android/server/MountService;->EXTERNAL_SD1:Ljava/lang/String;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3, v5, v6}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumesByPath:Ljava/util/HashMap;
+
+    const-string v5, "/storage/sdcard1"
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3, v5, v6}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v14
+
+    .restart local v14    # "length":I
+    if-lez v14, :cond_b
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    const/4 v5, 0x0
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/MountService;->mVolumePrimary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3, v5, v6}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+
+    const/4 v13, 0x0
+
+    .restart local v13    # "i":I
+    :goto_4
+    if-ge v13, v14, :cond_b
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    invoke-virtual {v3, v13}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3}, Landroid/os/storage/StorageVolume;->getPath()Ljava/lang/String;
+
+    move-result-object v3
+
+    const-string v5, "/storage/sdcard1"
+
+    invoke-virtual {v3, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_c
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/MountService;->mVolumes:Ljava/util/ArrayList;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/server/MountService;->mVolumeSecondary:Landroid/os/storage/StorageVolume;
+
+    invoke-virtual {v3, v13, v5}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
+
+    .end local v13    # "i":I
+    :cond_b
+    monitor-exit v4
+
+    goto/16 :goto_2
+
+    .end local v14    # "length":I
+    .end local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    :catchall_1
+    move-exception v3
+
+    monitor-exit v4
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    throw v3
+
+    .restart local v13    # "i":I
+    .restart local v14    # "length":I
+    .restart local v16    # "tempVolume":Landroid/os/storage/StorageVolume;
+    :cond_c
+    add-int/lit8 v13, v13, 0x1
+
+    goto :goto_4
+
+    .restart local v17    # "volume":Landroid/os/storage/StorageVolume;
+    :cond_d
+    :try_start_4
+    monitor-exit v4
+
+    goto/16 :goto_0
+
+    .end local v13    # "i":I
+    .end local v17    # "volume":Landroid/os/storage/StorageVolume;
+    :catchall_2
+    move-exception v3
+
+    monitor-exit v4
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
+
+    throw v3
 .end method
 
 .method private doShareSDVolumeUpdate()V
@@ -6978,7 +7802,7 @@
 
     if-eqz v1, :cond_6
 
-#    iput-boolean v4, p0, Lcom/android/server/MountService;->mSD1BootMounted:Z
+    iput-boolean v4, p0, Lcom/android/server/MountService;->mSD1BootMounted:Z
 
     iget-boolean v1, p0, Lcom/android/server/MountService;->mBootCompleted:Z
 
@@ -6998,7 +7822,7 @@
     :goto_0
     const-string v1, "storage_volume"
 
-#    invoke-virtual {v0, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    invoke-virtual {v0, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
     const-string v1, "MountService"
 
@@ -7048,7 +7872,7 @@
 
     iget-object v1, p0, Lcom/android/server/MountService;->mContext:Landroid/content/Context;
 
-#    invoke-virtual {v1, v0, p3}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+    invoke-virtual {v1, v0, p3}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
     return-void
 
@@ -7188,12 +8012,58 @@
 .end method
 
 .method private updateDefaultPathForSwap(ZLjava/lang/String;)V
-    .locals 0
+    .locals 2
     .param p1, "mount"    # Z
     .param p2, "path"    # Ljava/lang/String;
 
     .prologue
+    if-eqz p1, :cond_1
+
+    const-string v1, "/storage/sdcard1"
+
+    invoke-virtual {v1, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    const-string v1, "/storage/sdcard1"
+
+    invoke-direct {p0, v1}, Lcom/android/server/MountService;->setDefaultPath(Ljava/lang/String;)V
+
+    :cond_0
+    :goto_0
     return-void
+
+    :cond_1
+    if-nez p1, :cond_0
+
+    invoke-direct {p0}, Lcom/android/server/MountService;->getDefaultPath()Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "defaultPath":Ljava/lang/String;
+    sget-object v1, Lcom/android/server/MountService;->EXTERNAL_SD1:Ljava/lang/String;
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    const-string v1, "/storage/sdcard1"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    sget-object v1, Lcom/android/server/MountService;->EXTERNAL_SD1:Ljava/lang/String;
+
+    invoke-direct {p0, v1}, Lcom/android/server/MountService;->setDefaultPath(Ljava/lang/String;)V
+
+    goto :goto_0
 .end method
 
 .method private updateDefaultpath()V
@@ -12965,6 +13835,12 @@
 
     :cond_8
     :goto_5
+#    new-instance v11, Lcom/android/server/MountService$11;
+
+#    invoke-direct {v11, p0}, Lcom/android/server/MountService$11;-><init>(Lcom/android/server/MountService;)V
+
+#    invoke-virtual {v11}, Lcom/android/server/MountService$11;->start()V
+
     return-void
 
     :catch_1

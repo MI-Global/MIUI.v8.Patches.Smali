@@ -1,0 +1,4 @@
+appfile <framework2.jar>;
+
+# Enabling/Disabling sound tone when changing volume on "ro.mi-global.mute.volumecontrol" in build.prop
+methodreplace "%smali%/miui/view/VolumePanel.smali" ".method protected onPlaySound(II)V" "%here%/Framework2.jar/onPlaySound.m";

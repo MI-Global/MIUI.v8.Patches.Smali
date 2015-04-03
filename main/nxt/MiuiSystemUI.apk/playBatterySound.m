@@ -3,7 +3,7 @@
     .param p1, "soundUri"    # Landroid/net/Uri;
 
     .prologue
-    const-string v2, "ro.mi-global.charge.sound"
+    const-string v2, "ro.mi-global.mute.acpower"
 
     const/4 v3, 0x0
 
@@ -11,7 +11,7 @@
 
     move-result v3
 
-    if-nez v3, :cond_1
+    if-nez v3, :cond_0
 
     const/4 v3, 0x1
 
@@ -31,9 +31,8 @@
 
     move-result v2
 
-    if-eqz v2, :cond_0
+    if-nez v2, :cond_0
 
-	:cond_1
     if-eqz p1, :cond_0
 			  
     .line 295
