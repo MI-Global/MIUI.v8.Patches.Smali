@@ -21,3 +21,5 @@ replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "wait
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x1f4" "0xfa";
 # SHORT_TERM_AVERAGE_LIGHT_TIME_CONSTANT
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "const-wide/16 v4, 0x64" "const-wide/16 v4, 0x32";
+# SCREEN_DIM_MINIMUM_REDUCTION
+replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "add-int/lit8 v6, v3, -0xa" "add-int/lit8 v6, v3, -0x1";
