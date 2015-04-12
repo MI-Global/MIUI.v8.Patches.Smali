@@ -3,7 +3,6 @@ appfile <Browser.apk>;
 # Localize Browser
 replaceinall "yyyy-MM-dd" "d.M.yyyy";
 replaceinall "https://hot.browser.miui.com" "http://m.yandex.ru";
-replaceinall "https://webapp.browser.miui.com/v6/" "file:///system/etc/addquicklink.html";
 replaceinall "com.xiaomi.market" "com.android.vending";
 replaceinall "%d.%dG" "%d.%d \u0413\u0431";
 replaceinall "%d.%dM" "%d.%d \u041c\u0431";
@@ -12,3 +11,6 @@ replaceinall "%d.%dK" "%d.%d \u041a\u0431";
 # Favourites from local file /system/etc/yellowpage.html
 replaceinall "https://nav.browser.miui.com/v6/#" "file:///system/etc/yellowpage.html?";
 replaceinall "http://nav.browser.miui.com/v6/i18n" "file:///system/etc/yellowpage.html?";
+
+# Add quick shortcut tutorial from file /system/etc/addquicklink.html
+replaceinall "https://webapp.browser.miui.com/v6/" "file:///system/etc/addquicklink.html";
