@@ -2,3 +2,6 @@ appfile <android.policy.jar>;
 
 # Fix volume wake
 methodreplace "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali" ".method private isWakeKeyWhenScreenOff(I)Z" "%here%/android.policy.jar/isWakeKeyWhenScreenOff.m";
+
+# Smart Wake
+methodreplace "%smali%/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali" ".method public interceptKeyBeforeQueueingInternal(Landroid/view/KeyEvent;IZ)I" "%here%/android.policy.jar/interceptKeyBeforeQueueingInternal.m";

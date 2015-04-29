@@ -1,8 +1,5 @@
 appfile <Services.jar>;
 
-# Fix ShutDown issue
-#methodreplace "%smali%/com/android/server/power/ShutdownThread.smali" ".method public static rebootOrShutdown(ZLjava/lang/String;)V" "%here%/Services.jar/rebootOrShutdown.m";
-
 # Fix mounting
 copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
 
@@ -23,3 +20,8 @@ replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "0x1f
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "const-wide/16 v4, 0x64" "const-wide/16 v4, 0x32";
 # SCREEN_DIM_MINIMUM_REDUCTION
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "add-int/lit8 v6, v3, -0xa" "add-int/lit8 v6, v3, -0x1";
+
+# Smart Wake
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method private static wakefulnessToString(I)Ljava/lang/String;" "%here%/Services.jar/wakefulnessToString.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method static synthetic access$3000(Lcom/android/server/power/PowerManagerService;)V" "%here%/Services.jar/3000.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService$BootCompletedReceiver.smali" ".method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V" "%here%/Services.jar/onReceive.m";
