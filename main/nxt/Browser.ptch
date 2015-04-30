@@ -11,6 +11,7 @@ replaceinall "%d.%dK" "%d.%d \u041a\u0431";
 # Favourites from local file /system/etc/yellowpage.html
 replaceinall "https://nav.browser.miui.com/v6/#" "file:///system/etc/yellowpage.html?";
 replaceinall "http://nav.browser.miui.com/v6/i18n" "file:///system/etc/yellowpage.html?";
+replaceinall ""https://nav.browser.miui.com/v6/"" ""file:///system/etc/yellowpage.html?"";
 
 # Add quick shortcut tutorial from file /system/etc/addquicklink.html
 replaceinall "https://webapp.browser.miui.com/v6/" "file:///system/etc/addquicklink.html";
