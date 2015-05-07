@@ -1,0 +1,4 @@
+appfile <Services.jar>;
+
+# Disable online videos 
+methodreplace "%smali%/com/video/ui/miui/MiuiVideoConfig.smali" ".method public isOnlineVideoOn()Z" "%here%/MiuiVideo.apk/isOnlineVideoOn.m";

@@ -672,7 +672,7 @@
 
     move-result-object v0
 
-    const-string v3, "am start -n com.android.contacts/.activities.TwelveKeyDialer"
+    const-string v3, "input keyevent KEYCODE_CALL"
 
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
@@ -689,7 +689,7 @@
 # UP-Gesture
     const/16 v0, 0x13
 
-    if-ne v15, v0, :cond_34
+    if-ne v15, v0, :cond_51
 
     const-string v0, "persist.sys.off_gesture_up"
 
@@ -699,23 +699,9 @@
 
     move-result v0
 
-    if-eqz v0, :cond_34
+    if-eqz v0, :cond_51
 		
 
-
-
-    ## emulating buttons home, home ##
-#    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
-
-#    move-result-object v0
-
-#    const-string v3, "input keyevent 3"
-
-#    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
-
-#    const-string v3, "input keyevent 3"
-
-#    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
 
 
@@ -733,10 +719,55 @@
 
     goto :goto_7
 
+
+
+
+
+
+    :cond_51
+
+# e-Gesture
+    const/16 v0, 0x21
+
+    if-ne v15, v0, :cond_34
+
+    const-string v0, "persist.sys.off_gesture_e"
+
+    const/16 v1, 0x0
+
+    invoke-static/range {v0 .. v1}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
+    if-eqz v0, :cond_34
+		
+    ## disabling keyguard ##
+    move-object/from16 v0, p0    
+
+    iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
+
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
+
+
+    ## sending KEYCODE_ASSIST ##
+    
+    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+
+    move-result-object v0
+
+    const-string v3, "input keyevent KEYCODE_ASSIST"
+
+    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
+
+
+    const/4 v5, 0x1
+
+    goto :goto_7
+
+
+
+
     :cond_34
-
-
-
 
 # DOWN-Gesture
     const/16 v0, 0x14
