@@ -573,7 +573,7 @@
 # Master Switch
     const-string v0, "persist.sys.off_gesture_switch"
 
-    const/16 v1, 0x0
+    const/4 v1, 0x0
 
     invoke-static/range {v0 .. v1}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
 
@@ -581,6 +581,16 @@
 
     if-eqz v0, :cond_77
 
+
+    const/4 v0, 0x0
+
+    move-object/from16 v0, p0    
+
+    invoke-direct {v0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->isInCallScreenShowing()Z
+
+    move-result v0
+
+    if-nez v0, :cond_77
 
 
 

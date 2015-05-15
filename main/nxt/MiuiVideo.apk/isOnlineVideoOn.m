@@ -1,4 +1,4 @@
-.method public isOnlineVideoOn()Z
+.method public declared-synchronized isOnlineVideoOn()Z
     .locals 1
 
     .prologue

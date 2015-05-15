@@ -1,7 +1,7 @@
 appfile <SecurityCenter.apk>;
 
 # Shortening Root access reqeuest
-replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method private a(ILjava/lang/CharSequence;)Ljava/lang/String;" "const/4 v0, 0x0" "const v0, 0x7f080275\n\n    new-array v1, v1, [Ljava/lang/Object;\n\n    aput-object p2, v1, v2\n\n    invoke-virtual {p0, v0, v1}, Lcom/miui/permcenter/root/RootApplyActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;\n\n    move-result-object v0";
+replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method private a(ILjava/lang/CharSequence;)Ljava/lang/String;" "const/4 v0, 0x0" "const v0, 0x7f0801ea\n\n    new-array v1, v1, [Ljava/lang/Object;\n\n    aput-object p2, v1, v2\n\n    invoke-virtual {p0, v0, v1}, Lcom/miui/permcenter/root/RootApplyActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;\n\n    move-result-object v0";
 replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method public onClick(Landroid/view/View;)V" "const/4 v3, 0x5" "const/4 v3, 0x0";
 replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method public constructor <init>()V" "const/4 v0, 0x1" "const/4 v0, 0x0";
 replaceinmethod "%smali%/com/miui/permcenter/root/RootApplyActivity.smali" ".method public constructor <init>()V" "const/4 v0, 0x5" "const/4 v0, 0x0";

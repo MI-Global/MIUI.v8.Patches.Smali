@@ -12,4 +12,4 @@ replaceinfile "%smali%/../res/xml/settings_headers.xml" "<header android:id="@id
 replaceinfile "%smali%/../res/xml/settings_headers.xml" "<header android:id="@id/personal_section" />" "<header android:id="@id/personal_section" android:title="@string/header_category_personal" />";
 
 # Add print settings to "Other settings"
-replaceinfile "%smali%/../res/xml/other_personal_settings.xml" "HandyModeFragment" />" "HandyModeFragment" />\n    <Preference android:title="@string/print_settings" >\n            <intent android:action="android.settings.ACTION_PRINT_SETTINGS" />\n    </Preference>";
+#replaceinfile "%smali%/../res/xml/other_personal_settings.xml" "HandyModeFragment" />" "HandyModeFragment" />\n    <Preference android:title="@string/print_settings" >\n            <intent android:action="android.settings.ACTION_PRINT_SETTINGS" />\n    </Preference>";
