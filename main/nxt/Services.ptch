@@ -9,9 +9,9 @@ replaceinfile "%smali%/com/android/server/NotificationManagerService.smali" "con
 # LED color when charging. LED color is config_notificationsBatteryFullARGB in framework0res.apk/res/values/integers.xml
 copyfile "%here%/Services.jar/BatteryService$Led.smali" "%smali%/com/android/server/BatteryService$Led.smali";
 
-# Disable self protection so you can delete MIUI Updater.apk
-replaceinfile "%smali%/com/miui/server/SecurityManagerService.smali" "com.android.updater" "com.android.systemui";
-#methodreplace "%smali%/com/miui/server/SecurityManagerService.smali" ".method private checkSystemSelfProtection()V" "%here%/Services.jar/checkSystemSelfProtection.m";
+# Disable self protection so you can delete MIUI Updater.apk and MiuiMarket.apk
+#replaceinfile "%smali%/com/miui/server/SecurityManagerService.smali" "com.android.updater" "com.android.systemui";
+methodreplace "%smali%/com/miui/server/SecurityManagerService.smali" ".method private checkSystemSelfProtection(Z)V" "%here%/Services.jar/checkSystemSelfProtection.m";
 
 # Enable CRT animation on parameter ro.mi-global.crt.enabled=1
 replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" "const-wide/16 v1, 0x0" "const-wide/16 v1, 0x190";
