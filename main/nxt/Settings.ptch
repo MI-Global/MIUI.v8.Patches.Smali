@@ -13,3 +13,20 @@ replaceinfile "%smali%/../res/xml/settings_headers.xml" "<header android:id="@id
 
 # Add print settings to "Other settings"
 #replaceinfile "%smali%/../res/xml/other_personal_settings.xml" "HandyModeFragment" />" "HandyModeFragment" />\n    <Preference android:title="@string/print_settings" >\n            <intent android:action="android.settings.ACTION_PRINT_SETTINGS" />\n    </Preference>";
+
+# Display icons in advance settings
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/language_settings" 		"<Preference android:icon="@drawable/ic_language_settings" android:title="@string/language_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/title_font" 			"<Preference android:icon="@drawable/com_miui_notes" android:title="@string/title_font";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/handy_mode" 			"<Preference android:icon="@drawable/ic_accelerometer_settings" android:title="@string/handy_mode";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/print_settings" 			"<Preference android:icon="@drawable/ic_bt_imaging" android:title="@string/print_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/power_usage_summary_title" 	"<Preference android:icon="@drawable/ic_battery_settings" android:title="@string/power_usage_summary_title";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/storage_settings" 		"<Preference android:icon="@drawable/ic_storage_settings" android:title="@string/storage_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/led_settings" 			"<Preference android:icon="@drawable/ic_led_settings" android:title="@string/led_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/music_headset_settings" 		"<Preference android:icon="@drawable/music_ic_headset_settings" android:title="@string/music_headset_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/key_settings_title" 		"<Preference android:icon="@drawable/ic_key_settings" android:title="@string/key_settings_title";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/accessibility_settings" 		"<Preference android:icon="@drawable/ic_accessibility_settings" android:title="@string/accessibility_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/development_settings_title" 	"<Preference android:icon="@drawable/ic_development_settings" android:title="@string/development_settings_title";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/privacy_settings" 		"<Preference android:icon="@drawable/com_miui_backup" android:title="@string/privacy_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/display_settings" 		"<Preference android:icon="@drawable/ic_display_settings" android:title="@string/display_settings";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/screen_effect" 			"<Preference android:icon="@drawable/ic_ringer_volume_settings" android:title="@string/screen_effect";
+replaceinfile "%smali%/../res/xml/other_personal_settings.xml"    "<Preference android:title="@string/date_and_time_settings_title" 	"<Preference android:icon="@drawable/ic_date_time_settings" android:title="@string/date_and_time_settings_title";
