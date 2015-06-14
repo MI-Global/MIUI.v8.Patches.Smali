@@ -1,4 +1,4 @@
-appfile <MiuiFramework.apk>;
+appfile <miuisystem.apk>;
 
 # Free themes
 methodreplace "%smali%/smali/miui/drm/ThemeReceiver.smali" ".method private validateTheme(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z" "%here%/Themes/validateTheme.m";
