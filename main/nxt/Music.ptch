@@ -1,0 +1,4 @@
+appfile <Music.apk>;
+
+# International codepage
+replaceinmethod "%smali%/com/miui/player/scanner/FileScannerImpl$MyFileScannerClient.smali" ".method private detectAndNewString([B)Ljava/lang/String;" "if-eqz v3, :cond_2" "";
