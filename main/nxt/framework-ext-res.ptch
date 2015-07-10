@@ -1,5 +1,5 @@
 appfile <framework-ext-res.apk>;
 
-# Fix gallery buttons position
-replaceinfile "%smali%/../res/layout/text_edit_action_popup_text.xml" "@dimen/text_edit_action_popup_text_size" "10.0sp";
-replaceinfile "%smali%/../res/layout/text_edit_action_popup_text.xml" "TextView " "TextView android:singleLine="true" ";
+# Smaller copy/paste buttons font
+#replaceinfile "%smali%/../res/layout/text_edit_action_popup_text.xml" "@dimen/text_edit_action_popup_text_size" "10.0sp";
+#replaceinfile "%smali%/../res/layout/text_edit_action_popup_text.xml" "TextView " "TextView android:singleLine="true" ";
