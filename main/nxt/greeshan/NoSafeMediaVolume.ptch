@@ -1,4 +1,4 @@
 appfile <framework-res.apk>;
 
 # Disable safe media volume
-replaceinfile "%smali%/../res/values/bools.xml" "    <bool name="config_safe_media_volume_enabled">true</bool>" "    <bool name="config_safe_media_volume_enabled">false</bool>";
+replaceinfile "%res%/values/bools.xml" "    <bool name="config_safe_media_volume_enabled">true</bool>" "    <bool name="config_safe_media_volume_enabled">false</bool>";

@@ -2,4 +2,4 @@ appfile <TeleService.apk>;
 
 # Fix USSD error
 
-replaceinfile "%smali%/../res/values/styles.xml" " parent="@miui:style/Widget.EditText"" "";
+replaceinfile "%res%/values/styles.xml" " parent="@miui:style/Widget.EditText"" "";

@@ -1,10 +1,10 @@
 appfile <framework-res.apk>;
 
 # Location Qualcomm
-replaceinfile "%smali%/../res/values/strings.xml" "    <string name="config_networkLocationProviderPackageName">@null</string>" "    <string name="config_networkLocationProviderPackageName">com.qualcomm.location</string>";
+replaceinfile "%res%/values/strings.xml" "    <string name="config_networkLocationProviderPackageName">@null</string>" "    <string name="config_networkLocationProviderPackageName">com.qualcomm.location</string>";
 
-replaceinfile "%smali%/../res/values/strings.xml" "    <string name="config_fusedLocationProviderPackageName">com.android.location.fused</string>" "    <string name="config_fusedLocationProviderPackageName">com.qualcomm.location</string>";
+replaceinfile "%res%/values/strings.xml" "    <string name="config_fusedLocationProviderPackageName">com.android.location.fused</string>" "    <string name="config_fusedLocationProviderPackageName">com.qualcomm.location</string>";
 
-replaceinfile "%smali%/../res/values/strings.xml" "    <string name="config_geocoderProviderPackageName">@null</string>" "    <string name="config_geocoderProviderPackageName">com.qualcomm.location</string>";
+replaceinfile "%res%/values/strings.xml" "    <string name="config_geocoderProviderPackageName">@null</string>" "    <string name="config_geocoderProviderPackageName">com.qualcomm.location</string>";
 
-replaceinfile "%smali%/../res/values/strings.xml" "    <string name="config_geofenceProviderPackageName">@null</string>" "    <string name="config_geofenceProviderPackageName">com.qualcomm.location</string>";
+replaceinfile "%res%/values/strings.xml" "    <string name="config_geofenceProviderPackageName">@null</string>" "    <string name="config_geofenceProviderPackageName">com.qualcomm.location</string>";

@@ -1,4 +1,4 @@
 appfile <MiuiGallery.apk>;
 
 # Fix gallery buttons position
-replaceinfile "%smali%/../res/layout/paint_crop_menubar.xml" "center_vertical" "top";
+replaceinfile "%res%/layout/paint_crop_menubar.xml" "center_vertical" "top";

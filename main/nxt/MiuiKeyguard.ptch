@@ -4,4 +4,4 @@ appfile <MiuiKeyguard.apk>;
 replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerStartRemoteCenterAction()V" ".prologue" ".prologue\n\n    iget-object v6, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mKeyguardScreenCallback:Lcom/android/keyguard/MiuiKeyguardScreenCallback;\n\n    invoke-interface {v6}, Lcom/android/keyguard/MiuiKeyguardScreenCallback;->goToUnlockScreen()V";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "com.xiaomi.smarthome" "com.android.contacts";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "miio.activity.ClientAllLockedActivity" "activities.TwelveKeyDialer";
-replaceinfile "%smali%/../res/values/strings.xml" "Mi Remote" "Dialer";
+replaceinfile "%res%/values/strings.xml" "Mi Remote" "Dialer";
