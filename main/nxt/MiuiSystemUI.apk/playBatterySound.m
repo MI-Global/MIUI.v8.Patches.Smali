@@ -3,7 +3,7 @@
     .param p1, "soundUri"    # Landroid/net/Uri;
 
     .prologue
-    const-string v2, "ro.mi-global.mute.acpower"
+    const-string v2, "persist.sys.charge.sound"
 
     const/4 v3, 0x0
 
