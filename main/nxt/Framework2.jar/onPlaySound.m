@@ -25,7 +25,7 @@
 
 
 
-    const-string v2, "ro.mi-global.mute.volumecontrol"
+    const-string v2, "persist.sys.mute.volumecontrol"
 
     const/4 v3, 0x0
 
