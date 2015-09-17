@@ -2,7 +2,7 @@ appfile <Settings.apk>;
 
 # XML Patches
 # 4PDA icon for Bormental's ROM
-replaceinfile "%res%/xml/settings_headers.xml" "<header android:id="@id/wireless_section" "<header android:icon="@drawable/ic_4pda_settings" android:id="@id/manufacturer_settings">\n        <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.StockSettings" />\n    </header>\n    <header android:id="@id/wireless_section";
+#replaceinfile "%res%/xml/settings_headers.xml" "<header android:id="@id/wireless_section" "<header android:icon="@drawable/ic_4pda_settings" android:id="@id/manufacturer_settings">\n        <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.StockSettings" />\n    </header>\n    <header android:id="@id/wireless_section";
 
 # Disable WiFi Hotspot timer
 replaceinmethod "%smali%/com/android/settings/TetherSettings.smali" 		".method public onCreate(Landroid/os/Bundle;)V" 			".prologue" 		".prologue\n\n    invoke-virtual {p0}, Lcom/android/settings/TetherSettings;->getContentResolver()Landroid/content/ContentResolver;\n\n    move-result-object v0\n\n    const-string/jumbo v1, "wifi_hotspot_auto_disable"\n\n    const/4 v2, 0x0\n\n    invoke-static {v0, v1, v2}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z";
