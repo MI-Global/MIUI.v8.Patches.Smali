@@ -19,7 +19,7 @@
     :goto_0
     const/high16 v24, 0x1000000
 
-    and-int v24, v24, p2 
+    and-int v24, v24, p2
 
     if-eqz v24, :cond_5
 
@@ -195,6 +195,7 @@
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->handleKeyCombination()V
 
     .line 533
+
     const/16 v24, 0x1a
 
     move/from16 v0, v24
@@ -492,17 +493,17 @@
 
     move/from16 v24, v0
 
-    if-eqz v24, :cond_17
+    if-eqz v24, :cond_1f
 
-    if-eqz v16, :cond_17
+    if-eqz v16, :cond_1f
 
     const/16 v24, 0x1b
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_17
+    if-ne v15, v0, :cond_1f
 
-    if-nez v9, :cond_17
+    if-nez v9, :cond_1f
 
     .line 572
     const/16 v24, -0x1
@@ -559,18 +560,11 @@
     const/4 v13, 0x1
 
     .line 576
-    .local v13, "isWakeKey":Z  
+    .local v13, "isWakeKey":Z
     const/4 v5, 0x0
 
     .line 579
-    .local v5, "allowToWake":Z	  
-
-###############################################	
-
-
-
-
-# Master Switch
+    .local v5, "allowToWake":Z
     const-string v0, "persist.sys.off_gesture_switch"
 
     const/4 v1, 0x0
@@ -579,25 +573,21 @@
 
     move-result v0
 
-    if-eqz v0, :cond_77
-
+    if-eqz v0, :cond_1a
 
     const/4 v0, 0x0
 
-    move-object/from16 v0, p0    
+    move-object/from16 v0, p0
 
     invoke-direct {v0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->isInCallScreenShowing()Z
 
     move-result v0
 
-    if-nez v0, :cond_77
+    if-nez v0, :cond_1a
 
-
-
-# Double tap
     const/16 v0, 0x31
 
-    if-ne v15, v0, :cond_31
+    if-ne v15, v0, :cond_13
 
     const-string v0, "persist.sys.off_gesture_u"
 
@@ -607,20 +597,16 @@
 
     move-result v0
 
-    if-eqz v0, :cond_31
+    if-eqz v0, :cond_13
 
     const/4 v5, 0x1
 
-    goto :goto_7
+    goto/16 :goto_7
 
-    :cond_31  
-
-
-
-# C-Gesture
+    :cond_13
     const/16 v0, 0x1f
 
-    if-ne v15, v0, :cond_32
+    if-ne v15, v0, :cond_14
 
     const-string v0, "persist.sys.off_gesture_c"
 
@@ -630,8 +616,8 @@
 
     move-result v0
 
-    if-eqz v0, :cond_32
-		
+    if-eqz v0, :cond_14
+
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
@@ -646,17 +632,12 @@
 
     const/4 v5, 0x1
 
-    goto :goto_7
+    goto/16 :goto_7
 
-    :cond_32 
-
-
-
-
-# O-Gesture
+    :cond_14
     const/16 v0, 0x2b
 
-    if-ne v15, v0, :cond_33
+    if-ne v15, v0, :cond_15
 
     const-string v0, "persist.sys.off_gesture_o"
 
@@ -666,18 +647,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_33
-		
+    if-eqz v0, :cond_15
 
-    ## disabling keyguard ##
-    move-object/from16 v0, p0    
+    move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
 
-
-    ## launching dialer ##
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
     move-result-object v0
@@ -686,20 +663,14 @@
 
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
-
     const/4 v5, 0x1
 
-    goto :goto_7
+    goto/16 :goto_7
 
-    :cond_33
-
-
-
-
-# UP-Gesture
+    :cond_15
     const/16 v0, 0x13
 
-    if-ne v15, v0, :cond_51
+    if-ne v15, v0, :cond_16
 
     const-string v0, "persist.sys.off_gesture_up"
 
@@ -709,37 +680,22 @@
 
     move-result v0
 
-    if-eqz v0, :cond_51
-		
+    if-eqz v0, :cond_16
 
-
-
-
-
-    ## disabling keyguard ##
-    move-object/from16 v0, p0    
+    move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
 
- 
-
     const/4 v5, 0x1
 
     goto :goto_7
 
-
-
-
-
-
-    :cond_51
-
-# e-Gesture
+    :cond_16
     const/16 v0, 0x21
 
-    if-ne v15, v0, :cond_34
+    if-ne v15, v0, :cond_17
 
     const-string v0, "persist.sys.off_gesture_e"
 
@@ -749,18 +705,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_34
-		
-    ## disabling keyguard ##
-    move-object/from16 v0, p0    
+    if-eqz v0, :cond_17
+
+    move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
 
-
-    ## sending KEYCODE_ASSIST ##
-    
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
     move-result-object v0
@@ -769,20 +721,16 @@
 
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
-
     const/4 v5, 0x1
 
     goto :goto_7
 
+    :cond_17
 
-
-
-    :cond_34
-
-# DOWN-Gesture
+##############################
     const/16 v0, 0x14
 
-    if-ne v15, v0, :cond_35
+    if-ne v15, v0, :cond_18
 
     const-string v0, "persist.sys.off_gesture_down"
 
@@ -792,49 +740,23 @@
 
     move-result v0
 
-    if-eqz v0, :cond_35
-		
+    if-eqz v0, :cond_18
 
-    ## emulating PLAY/PAUSE button ##
-
-    :try_start_3
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+
     move-result-object v0
+
     const-string v3, "input keyevent KEYCODE_MEDIA_PLAY_PAUSE"
+
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
-    :try_end_3
 
+    goto :goto_80
+####################################
 
-#    move-object/from16 v0, p0
-
-#    iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
-
-#    new-instance v2, Landroid/content/Intent;
-
-#    const-string v3, "com.android.music.musicservicecommand.pause"
-
-#    invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-#    invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-
-
-
-
-
-
-    const/4 v5, 0x1
-
-    goto :goto_7
-
-    :cond_35
-
-
-
-
-# LEFT-Gesture
+    :cond_18
     const/16 v0, 0x15
 
-    if-ne v15, v0, :cond_36
+    if-ne v15, v0, :cond_19
 
     const-string v0, "persist.sys.off_gesture_left"
 
@@ -844,47 +766,22 @@
 
     move-result v0
 
-    if-eqz v0, :cond_36
-		
+    if-eqz v0, :cond_19
 
-    ## emulating PREV_TRACK button ##
-    :try_start_1
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+
     move-result-object v0
+
     const-string v3, "input keyevent KEYCODE_MEDIA_PREVIOUS"
+
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
-    :try_end_1
 
+    goto :goto_80
 
-
-#    move-object/from16 v0, p0
-
-#    iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
-
-#    new-instance v2, Landroid/content/Intent;
-
-#    const-string v3, "com.android.music.musicservicecommand.previous"
-
-#    invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-#    invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-
-
-
-
-    const/4 v5, 0x1
-
-    goto :goto_7
-
-    :cond_36
-
-
-
-
-# RIGHT-Gesture
+    :cond_19
     const/16 v0, 0x16
 
-    if-ne v15, v0, :cond_37
+    if-ne v15, v0, :cond_1a
 
     const-string v0, "persist.sys.off_gesture_right"
 
@@ -894,62 +791,50 @@
 
     move-result v0
 
-    if-eqz v0, :cond_37
-		
+    if-eqz v0, :cond_1a
 
-    ## emulating NEXT_TRACK button ##
-    :try_start_2
     invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+
     move-result-object v0
+
     const-string v3, "input keyevent KEYCODE_MEDIA_NEXT"
+
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
-    :try_end_2
+#######################
+    :goto_80
 
+    move-object/from16 v0, p0
 
+    move-object/from16 v1, p1
 
+    move/from16 v2, p2
 
-#    move-object/from16 v0, p0
+    move/from16 v3, p3
 
-#    iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+    const/16 v4, 0x1
 
-#    new-instance v2, Landroid/content/Intent;
+    invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->intercept(Landroid/view/KeyEvent;IZI)I
 
-#    const-string v3, "com.android.music.musicservicecommand.next"
+    move-result v24
 
-#    invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-#    invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-
-
-
-
-
-
-    const/4 v5, 0x1
-
-    goto :goto_7
-
-    :cond_37
-    :cond_77
-
-
-###############################################
-
+    goto :goto_3
+####################
+    :cond_1a
     sparse-switch v15, :sswitch_data_1
 
     .line 600
     const/4 v13, 0x0
 
     .line 603
-    :cond_13
+    :cond_1b
     :goto_7
-    if-eqz v13, :cond_17
+    if-eqz v13, :cond_1f
 
     .line 604
-    if-eqz v5, :cond_16
+    if-eqz v5, :cond_1e
 
     .line 605
-    if-eqz v9, :cond_14
+    if-eqz v9, :cond_1c
 
     .line 607
     const/16 v24, 0x0
@@ -999,7 +884,7 @@
 
     move-result v24
 
-    if-eqz v24, :cond_13
+    if-eqz v24, :cond_1b
 
     .line 595
     const/4 v5, 0x0
@@ -1007,8 +892,8 @@
     goto :goto_7
 
     .line 610
-    :cond_14
-    if-eqz v16, :cond_15
+    :cond_1c
+    if-eqz v16, :cond_1d
 
     .line 611
     move-object/from16 v0, p0
@@ -1024,7 +909,7 @@
     invoke-virtual/range {v24 .. v26}, Lcom/android/internal/policy/impl/MiuiKeyguardServiceDelegate;->onWakeKeyWhenKeyguardShowingTq(IZ)Z
 
     .line 613
-    :cond_15
+    :cond_1d
     const/16 v24, 0x1
 
     move-object/from16 v0, p0
@@ -1044,7 +929,7 @@
     goto/16 :goto_3
 
     .line 616
-    :cond_16
+    :cond_1e
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->getWakePolicyFlag()I
 
     move-result v24
@@ -1056,12 +941,12 @@
     .line 620
     .end local v5    # "allowToWake":Z
     .end local v13    # "isWakeKey":Z
-    :cond_17
+    :cond_1f
     const/16 v24, 0x4f
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_19
+    if-ne v15, v0, :cond_21
 
     .line 621
     move-object/from16 v0, p0
@@ -1084,14 +969,14 @@
 
     .line 626
     .local v10, "enabled":Z
-    if-eqz v10, :cond_19
+    if-eqz v10, :cond_21
 
     .line 627
     invoke-virtual/range {p1 .. p1}, Landroid/view/KeyEvent;->getRepeatCount()I
 
     move-result v24
 
-    if-nez v24, :cond_18
+    if-nez v24, :cond_20
 
     .line 628
     new-instance v17, Landroid/content/Intent;
@@ -1159,7 +1044,7 @@
 
     .line 635
     .end local v17    # "mikeyIntent":Landroid/content/Intent;
-    :cond_18
+    :cond_20
     const/16 v24, 0x0
 
     move-object/from16 v0, p0
@@ -1180,22 +1065,22 @@
 
     .line 639
     .end local v10    # "enabled":Z
-    :cond_19
-    if-eqz v9, :cond_26
+    :cond_21
+    if-eqz v9, :cond_2e
 
     .line 641
     const/16 v24, 0x1a
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_21
+    if-ne v15, v0, :cond_29
 
     const/16 v22, 0x1
 
     .line 642
     .local v22, "stopNotification":Z
     :goto_8
-    if-nez v22, :cond_1b
+    if-nez v22, :cond_23
 
     .line 643
     :try_start_0
@@ -1205,41 +1090,41 @@
 
     .line 644
     .local v23, "wm":Landroid/view/IWindowManager;
-    if-eqz v23, :cond_1b
+    if-eqz v23, :cond_23
 
     invoke-interface/range {v23 .. v23}, Landroid/view/IWindowManager;->isKeyguardLocked()Z
 
     move-result v24
 
-    if-eqz v24, :cond_1b
+    if-eqz v24, :cond_23
 
     .line 645
     const/16 v24, 0x19
 
     move/from16 v0, v24
 
-    if-eq v15, v0, :cond_1a
+    if-eq v15, v0, :cond_22
 
     const/16 v24, 0x18
 
     move/from16 v0, v24
 
-    if-eq v15, v0, :cond_1a
+    if-eq v15, v0, :cond_22
 
     const/16 v24, 0xa4
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_1b
+    if-ne v15, v0, :cond_23
 
     .line 648
-    :cond_1a
+    :cond_22
     const/16 v22, 0x1
 
     .line 653
     .end local v23    # "wm":Landroid/view/IWindowManager;
-    :cond_1b
-    if-eqz v22, :cond_1c
+    :cond_23
+    if-eqz v22, :cond_24
 
     move-object/from16 v0, p0
 
@@ -1247,7 +1132,7 @@
 
     move/from16 v24, v0
 
-    if-eqz v24, :cond_1c
+    if-eqz v24, :cond_24
 
     .line 654
     invoke-virtual/range {p0 .. p0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->getStatusBarService()Lcom/android/internal/statusbar/IStatusBarService;
@@ -1256,34 +1141,33 @@
 
     .line 655
     .local v21, "statusBarService":Lcom/android/internal/statusbar/IStatusBarService;
-    if-eqz v21, :cond_1c
+    if-eqz v21, :cond_24
 
     .line 656
     invoke-interface/range {v21 .. v21}, Lcom/android/internal/statusbar/IStatusBarService;->onPanelRevealed()V
 
     .line 660
     .end local v21    # "statusBarService":Lcom/android/internal/statusbar/IStatusBarService;
-    :cond_1c
+    :cond_24
     const/16 v24, 0x1a
 
     move/from16 v0, v24
 
-    if-eq v15, v0, :cond_1d
+    if-eq v15, v0, :cond_25
 
     const/16 v24, 0x19
 
     move/from16 v0, v24
 
-    if-eq v15, v0, :cond_1d
+    if-eq v15, v0, :cond_25
 
     const/16 v24, 0xa4
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_1e
-
+    if-ne v15, v0, :cond_26
     .line 663
-    :cond_1d
+    :cond_25
     new-instance v11, Landroid/content/Intent;
 
     const-string v24, "android.intent.action.KEYCODE_MUTE"
@@ -1294,7 +1178,7 @@
 
     .line 664
     .local v11, "i":Landroid/content/Intent;
-    const/high16 v24, 0x40000000
+    const/high16 v24, 0x40000000    # 2.0f
 
     move/from16 v0, v24
 
@@ -1313,21 +1197,21 @@
 
     .line 668
     .end local v11    # "i":Landroid/content/Intent;
-    :cond_1e
+    :cond_26
     const/16 v24, 0x19
 
     move/from16 v0, v24
 
-    if-eq v15, v0, :cond_1f
+    if-eq v15, v0, :cond_27
 
     const/16 v24, 0x18
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_23
+    if-ne v15, v0, :cond_2b
 
     .line 670
-    :cond_1f
+    :cond_27
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
@@ -1360,9 +1244,9 @@
 
     .line 674
     .local v18, "pkg":Ljava/lang/String;
-    if-eqz v19, :cond_23
+    if-eqz v19, :cond_2b
 
-    if-eqz v18, :cond_23
+    if-eqz v18, :cond_2b
 
     .line 675
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -1383,7 +1267,7 @@
     .local v20, "running":Z
     sget-boolean v24, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->DEBUG:Z
 
-    if-eqz v24, :cond_20
+    if-eqz v24, :cond_28
 
     .line 678
     const-string v24, "WindowManager"
@@ -1415,8 +1299,8 @@
     invoke-static/range {v24 .. v25}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 680
-    :cond_20
-    if-eqz v20, :cond_22
+    :cond_28
+    if-eqz v20, :cond_2a
 
     .line 681
     new-instance v11, Landroid/content/Intent;
@@ -1434,7 +1318,7 @@
     invoke-virtual {v11, v0}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
     .line 683
-    const/high16 v24, 0x40000000
+    const/high16 v24, 0x40000000    # 2.0f
 
     move/from16 v0, v24
 
@@ -1487,7 +1371,7 @@
     .end local v19    # "proc":Ljava/lang/String;
     .end local v20    # "running":Z
     .end local v22    # "stopNotification":Z
-    :cond_21
+    :cond_29
     const/16 v22, 0x0
 
     goto/16 :goto_8
@@ -1499,7 +1383,7 @@
     .restart local v19    # "proc":Ljava/lang/String;
     .restart local v20    # "running":Z
     .restart local v22    # "stopNotification":Z
-    :cond_22
+    :cond_2a
     const-string v24, "remote_control_proc_name"
 
     const/16 v25, 0x0
@@ -1530,24 +1414,24 @@
     .end local v19    # "proc":Ljava/lang/String;
     .end local v20    # "running":Z
     .end local v22    # "stopNotification":Z
-    :cond_23
+    :cond_2b
     :goto_9
-    if-eqz v9, :cond_25
+    if-eqz v9, :cond_2d
 
     const/16 v24, 0x18
 
     move/from16 v0, v24
 
-    if-eq v0, v15, :cond_24
+    if-eq v0, v15, :cond_2c
 
     const/16 v24, 0x19
 
     move/from16 v0, v24
 
-    if-ne v0, v15, :cond_25
+    if-ne v0, v15, :cond_2d
 
     .line 702
-    :cond_24
+    :cond_2c
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mSuperWaitingKey:Ljava/util/HashSet;
@@ -1561,7 +1445,7 @@
     invoke-virtual/range {v24 .. v25}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
     .line 704
-    :cond_25
+    :cond_2d
     invoke-virtual/range {p0 .. p3}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->callSuperInterceptKeyBeforeQueueing(Landroid/view/KeyEvent;IZ)I
 
     move-result v24
@@ -1569,12 +1453,12 @@
     goto/16 :goto_3
 
     .line 696
-    :cond_26	
+    :cond_2e
     const/16 v24, 0x1a
 
     move/from16 v0, v24
 
-    if-ne v15, v0, :cond_23
+    if-ne v15, v0, :cond_2b
 
     .line 697
     move-object/from16 v0, p0
@@ -1590,9 +1474,7 @@
     invoke-direct/range {v25 .. v26}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     invoke-virtual/range {v24 .. v25}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-###################
-#    invoke-virtual {p0}, Landroid/app/KeyguardManager$KeyguardLock;->disableKeyguard()V
-##################
+
     goto :goto_9
 
     .line 693
@@ -1603,8 +1485,6 @@
     goto :goto_9
 
     .line 540
-    nop
-
     :sswitch_data_0
     .sparse-switch
         0x3 -> :sswitch_0
