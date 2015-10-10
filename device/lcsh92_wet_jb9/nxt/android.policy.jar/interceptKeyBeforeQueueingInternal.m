@@ -601,6 +601,30 @@
 
     const/4 v5, 0x1
 
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
+
     goto/16 :goto_7
 
     :cond_13
@@ -631,6 +655,30 @@
     invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
     const/4 v5, 0x1
+
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
 
     goto/16 :goto_7
 
@@ -665,6 +713,30 @@
 
     const/4 v5, 0x1
 
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
+
     goto/16 :goto_7
 
     :cond_15
@@ -689,6 +761,30 @@
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
 
     const/4 v5, 0x1
+
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
 
     goto :goto_7
 
@@ -722,6 +818,30 @@
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
     const/4 v5, 0x1
+
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
 
     goto :goto_7
 
@@ -802,6 +922,30 @@
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 #######################
     :goto_80
+
+#####################################################
+
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0    # "vib":Landroid/os/Vibrator;
+
+    const-wide/16 v1, 0x14
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0    # "vib":Landroid/os/Vibrator;
+
+#####################################################
 
     move-object/from16 v0, p0
 
