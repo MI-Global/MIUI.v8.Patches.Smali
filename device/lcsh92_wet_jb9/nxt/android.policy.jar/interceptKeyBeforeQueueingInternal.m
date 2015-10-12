@@ -195,7 +195,6 @@
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->handleKeyCombination()V
 
     .line 533
-
     const/16 v24, 0x1a
 
     move/from16 v0, v24
@@ -599,9 +598,33 @@
 
     if-eqz v0, :cond_13
 
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
+
     const/4 v5, 0x1
 
-    goto/16 :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
+    goto/16 :goto_8
 
     :cond_13
     const/16 v0, 0x1f
@@ -618,6 +641,12 @@
 
     if-eqz v0, :cond_14
 
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
+
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
@@ -632,7 +661,25 @@
 
     const/4 v5, 0x1
 
-    goto/16 :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
+    goto/16 :goto_8
 
     :cond_14
     const/16 v0, 0x2b
@@ -648,6 +695,12 @@
     move-result v0
 
     if-eqz v0, :cond_15
+
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
 
     move-object/from16 v0, p0
 
@@ -665,7 +718,25 @@
 
     const/4 v5, 0x1
 
-    goto/16 :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
+    goto/16 :goto_8
 
     :cond_15
     const/16 v0, 0x13
@@ -682,6 +753,12 @@
 
     if-eqz v0, :cond_16
 
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
+
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
@@ -690,7 +767,25 @@
 
     const/4 v5, 0x1
 
-    goto :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
+    goto/16 :goto_8
 
     :cond_16
     const/16 v0, 0x21
@@ -706,6 +801,12 @@
     move-result v0
 
     if-eqz v0, :cond_17
+
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
 
     move-object/from16 v0, p0
 
@@ -723,11 +824,27 @@
 
     const/4 v5, 0x1
 
-    goto :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/Vibrator;
+
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
+    goto :goto_8
 
     :cond_17
-
-##############################
     const/16 v0, 0x14
 
     if-ne v15, v0, :cond_18
@@ -742,16 +859,20 @@
 
     if-eqz v0, :cond_18
 
-    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+##########################
+    invoke-virtual/range {p1 .. p1}, Landroid/view/KeyEvent;->getAction()I
 
-    move-result-object v0
+    move-result v24
 
-    const-string v3, "input keyevent KEYCODE_MEDIA_PLAY_PAUSE"
+    if-nez v24, :cond_18
 
-    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
+    move-object/from16 v0, p0
 
-    goto :goto_80
-####################################
+    const/16 v1, 0x55
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->sendMediaButtonEvent(I)V
+
+    goto :goto_7
 
     :cond_18
     const/16 v0, 0x15
@@ -768,15 +889,19 @@
 
     if-eqz v0, :cond_19
 
-    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+    invoke-virtual/range {p1 .. p1}, Landroid/view/KeyEvent;->getAction()I
 
-    move-result-object v0
+    move-result v24
 
-    const-string v3, "input keyevent KEYCODE_MEDIA_PREVIOUS"
+    if-nez v24, :cond_19
 
-    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
+    move-object/from16 v0, p0
 
-    goto :goto_80
+    const/16 v1, 0x58
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->sendMediaButtonEvent(I)V
+
+    goto :goto_7
 
     :cond_19
     const/16 v0, 0x16
@@ -793,15 +918,39 @@
 
     if-eqz v0, :cond_1a
 
-    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+    invoke-virtual/range {p1 .. p1}, Landroid/view/KeyEvent;->getAction()I
+
+    move-result v24
+
+    if-nez v24, :cond_1a
+
+    move-object/from16 v0, p0
+
+    const/16 v1, 0x57
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->sendMediaButtonEvent(I)V
+
+    goto :goto_7
+
+    :goto_7
+    move-object/from16 v1, p0
+
+    iget-object v1, v1, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v2, "vibrator"
+
+    invoke-virtual/range {v1 .. v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
-    const-string v3, "input keyevent KEYCODE_MEDIA_NEXT"
+    check-cast v0, Landroid/os/Vibrator;
 
-    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
-#######################
-    :goto_80
+    .local v0
+    const-wide/16 v1, 0x64
+
+    invoke-virtual/range {v0 .. v2}, Landroid/os/Vibrator;->vibrate(J)V
+
+    .end local v0
 
     move-object/from16 v0, p0
 
@@ -811,14 +960,14 @@
 
     move/from16 v3, p3
 
-    const/16 v4, 0x1
+    const/16 v4, 0x0
 
     invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->intercept(Landroid/view/KeyEvent;IZI)I
 
     move-result v24
 
-    goto :goto_3
-####################
+    goto/16 :goto_3
+
     :cond_1a
     sparse-switch v15, :sswitch_data_1
 
@@ -827,7 +976,7 @@
 
     .line 603
     :cond_1b
-    :goto_7
+    :goto_8
     if-eqz v13, :cond_1f
 
     .line 604
@@ -862,7 +1011,7 @@
     iget-boolean v5, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mTrackballWakeScreen:Z
 
     .line 582
-    goto :goto_7
+    goto :goto_8
 
     .line 585
     :sswitch_2
@@ -871,7 +1020,7 @@
     iget-boolean v5, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mCameraKeyWakeScreen:Z
 
     .line 586
-    goto :goto_7
+    goto :goto_8
 
     .line 590
     :sswitch_3
@@ -889,7 +1038,7 @@
     .line 595
     const/4 v5, 0x0
 
-    goto :goto_7
+    goto :goto_8
 
     .line 610
     :cond_1c
@@ -1079,7 +1228,7 @@
 
     .line 642
     .local v22, "stopNotification":Z
-    :goto_8
+    :goto_9
     if-nez v22, :cond_23
 
     .line 643
@@ -1166,6 +1315,7 @@
     move/from16 v0, v24
 
     if-ne v15, v0, :cond_26
+
     .line 663
     :cond_25
     new-instance v11, Landroid/content/Intent;
@@ -1177,7 +1327,9 @@
     invoke-direct {v11, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 664
+
     .local v11, "i":Landroid/content/Intent;
+
     const/high16 v24, 0x40000000    # 2.0f
 
     move/from16 v0, v24
@@ -1313,6 +1465,7 @@
 
     .line 682
     .restart local v11    # "i":Landroid/content/Intent;
+
     move-object/from16 v0, v18
 
     invoke-virtual {v11, v0}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
@@ -1374,7 +1527,7 @@
     :cond_29
     const/16 v22, 0x0
 
-    goto/16 :goto_8
+    goto/16 :goto_9
 
     .line 688
     .restart local v6    # "c":J
@@ -1415,7 +1568,7 @@
     .end local v20    # "running":Z
     .end local v22    # "stopNotification":Z
     :cond_2b
-    :goto_9
+    :goto_a
     if-eqz v9, :cond_2d
 
     const/16 v24, 0x18
@@ -1475,14 +1628,16 @@
 
     invoke-virtual/range {v24 .. v25}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    goto :goto_9
+    goto :goto_a
 
     .line 693
     .restart local v22    # "stopNotification":Z
     :catch_0
     move-exception v24
 
-    goto :goto_9
+    goto :goto_a
+
+    nop
 
     .line 540
     :sswitch_data_0
