@@ -1006,6 +1006,30 @@
 
     .line 581
     :sswitch_1
+
+#############################
+
+    const-string/jumbo v1, "persist.sys.volume.skip"
+    const/4 v0, 0x0
+    invoke-static {v1, v0}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
+    move-result v0
+    if-eqz v0, :cond_50
+    if-nez p3, :cond_50
+    move-object/from16 v0, p0
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isMusicActive()Z
+    move-result v1
+    if-eqz v1, :cond_50
+    move-object/from16 v1, p1
+    invoke-virtual {v0, v1}, Lcom/android/internal/policy/impl/PhoneWindowManager;->HandleVolumeDoublePress(Landroid/view/KeyEvent;)Z
+    move-result v1
+    if-eqz v1, :cond_50
+    const/16 v16, 0x0
+    goto :goto_0
+    :cond_50
+
+#############################
+
+
     move-object/from16 v0, p0
 
     iget-boolean v5, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mTrackballWakeScreen:Z
