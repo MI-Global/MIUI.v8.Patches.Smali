@@ -40,22 +40,10 @@
     .locals 1
 
     .prologue
-#    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$VolumeLongPress;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
-
-#    iget-boolean v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mVolumeLongPressed:Z
-
-#    if-eqz v0, :cond_0
-
-#    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$VolumeLongPress;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
-
-#    const/4 v1, 0x0
-
-#    iput-boolean v1, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mVolumeLongPressed:Z
 
     iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$VolumeLongPress;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-virtual {v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->VolumeLongPressedAction()V
 
-#    :cond_0
     return-void
 .end method
