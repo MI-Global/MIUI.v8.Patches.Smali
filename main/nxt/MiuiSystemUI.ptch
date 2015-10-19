@@ -4,4 +4,4 @@ appfile <MiuiSystemUI.apk>;
 methodreplace "%smali%/com/android/systemui/power/PowerUI.smali" ".method playBatterySound(Landroid/net/Uri;)V" "%here%/MiuiSystemUI.apk/playBatterySound.m";
 
 # Disable floating notifications in DND mode
-replaceinmetod "%smali%/com/android/systemui/statusbar/phone/PhoneStatusBar.smali" 		".method private addFloatNotification(Landroid/os/IBinder;)V"		".prologue"		".prologue\n    iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuietModeEnable:Z\n    if-eqz v0, :cond_50\n    return-void\n    :cond_50";
+replaceinmethod "%smali%/com/android/systemui/statusbar/phone/PhoneStatusBar.smali" 		".method private addFloatNotification(Landroid/os/IBinder;)V"		".prologue"		".prologue\n    iget-boolean v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuietModeEnable:Z\n    if-eqz v0, :cond_50\n    return-void\n    :cond_50";
