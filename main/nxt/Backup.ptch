@@ -1,0 +1,4 @@
+appfile <Backup.apk>;
+
+# Fix connectivity change error
+methodreplace "%smali%/com/miui/backup/ui/LocalBackupFragmentBase.smali" ".method private registerNetworkStateReceiver()V" "%here%/Backup.apk/registerNetworkStateReceiver.m";

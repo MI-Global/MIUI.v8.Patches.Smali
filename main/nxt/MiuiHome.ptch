@@ -1,0 +1,3 @@
+appfile <MiuiHome.apk>;
+
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" 	"const/4 v0, 0x1";
