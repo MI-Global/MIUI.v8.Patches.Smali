@@ -1,4 +1,0 @@
-appfile <MiuiVideo.apk>;
-
-# Disable online videos 
-methodreplace "%smali%/com/video/ui/miui/MiuiVideoConfig.smali" ".method public declared-synchronized isOnlineVideoOn()Z" "%here%/MiuiVideo.apk/isOnlineVideoOn.m";

@@ -1,0 +1,9 @@
+appfile <Browser.apk>;
+
+# Localize Browser
+replaceinall "yyyy-MM-dd" "d.M.yyyy";
+replaceinall "https://hot.browser.miui.com" "http://m.yandex.ru";
+replaceinall "com.xiaomi.market" "com.android.vending";
+replaceinall "%d.%dG" "%d.%d \u0413\u0431";
+replaceinall "%d.%dM" "%d.%d \u041c\u0431";
+replaceinall "%d.%dK" "%d.%d \u041a\u0431";

@@ -1,0 +1,16 @@
+appfile <Contacts.apk>;
+
+# Call log name multiline 
+replaceinfile "%res%/layout/dialer_list_call_normal_item.xml" 		"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" 			"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false";
+replaceinfile "%res%/layout/dialer_list_call_simple_item.xml" 		"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" 			"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false";
+replaceinfile "%res%/layout/dialer_list_contact_normal_item.xml" 	"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" 			"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false";
+replaceinfile "%res%/layout/dialer_list_call_simple_item.xml" 		"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" 			"id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false";
+
+# Contacts list multiline
+replaceinmethod "%smali%/com/android/contacts/list/ContactListItemView.smali" 	".method public getNameTextView()Landroid/widget/TextView;" 		"const/4 v1, 0x1" 		"const/4 v1, 0x0";
+
+#########################################################################################################
+appfile <InCallUI.apk>;
+
+# CallerID MultiLine
+replaceinfile "%res%/layout/single_call_info.xml" "android:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"" "android:id="@id/name" android:focusable="true" android:focusableInTouchMode="true" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:gravity="center"";

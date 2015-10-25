@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Add MTK Engineer Mode to About Settings
+replaceinfile "%res%/xml/device_info_status.xml"    				"</PreferenceScreen>" 		"        <PreferenceScreen android:title="@string/engineermode" android:key="engineermode_settings" >\n            <intent android:targetPackage="com.mediatek.engineermode" android:action="android.intent.action.MAIN" android:targetClass="com.mediatek.engineermode.EngineerMode" />\n        </PreferenceScreen>\n</PreferenceScreen>";

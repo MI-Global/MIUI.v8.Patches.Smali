@@ -1,4 +1,0 @@
-appfile <Services.jar>;
-
-##################################### Fix mounting USB ###########################################
-copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";

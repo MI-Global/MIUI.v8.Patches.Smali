@@ -1,0 +1,4 @@
+appfile <MiuiCamera.apk>;
+
+# Enable second storage
+methodreplace "%smali%/com/android/camera/Device.smali" ".method public static isSupportedSecondaryStorage()Z" "%here%/methods/isSupportedSecondaryStorage.m";

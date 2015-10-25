@@ -1,0 +1,4 @@
+appfile <Services.jar>;
+
+# Disable self protection so you can delete MIUI Updater.apk and MiuiMarket.apk
+methodreplace "%smali%/com/miui/server/SecurityManagerService.smali" ".method private checkSystemSelfProtection(Z)V" "%here%/methods/checkSystemSelfProtection.m";

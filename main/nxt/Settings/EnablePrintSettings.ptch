@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Enable print settings in "Other settings"
+replaceinmethod "%smali%/com/android/settings/OtherPersonalSettings.smali" ".method public onCreate(Landroid/os/Bundle;)V" "if-nez v2, :cond_3"	"if-nez v2, :cond_3 \n\n    if-eqz v2, :cond_3";

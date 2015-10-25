@@ -1,0 +1,4 @@
+appfile <Music.apk>;
+
+# Local tab is active by default
+replaceinfile "%smali%/com/miui/player/content/preference/PreferenceDef$DefaultValues.smali" "first_in_index"\n\n    invoke-static {v5}" "first_in_index"\n\n    invoke-static {v6}";

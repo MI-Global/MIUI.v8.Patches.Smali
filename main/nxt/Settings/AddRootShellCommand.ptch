@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Add Root Shell Extension
+copy "%here%/smali/com" "%smali%/com";

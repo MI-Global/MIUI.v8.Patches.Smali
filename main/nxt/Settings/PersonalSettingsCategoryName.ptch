@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Personal settings category name
+replaceinfile "%res%/xml/settings_headers.xml" "<header android:id="@id/personal_section" />" "<header android:id="@id/personal_section" android:title="@string/header_category_personal" />";

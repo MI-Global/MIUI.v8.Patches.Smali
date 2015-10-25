@@ -1,0 +1,4 @@
+appfile <ContactsProvider.apk>;
+
+# Remove comma after last name
+replaceinmethod "%smali%/com/android/providers/contacts/NameSplitter.smali" 				".method public join(Lcom/android/providers/contacts/NameSplitter$Name;ZZ)Ljava/lang/String;" 			"const/4 v7, 0x1" 			"const/4 v7, 0x0";

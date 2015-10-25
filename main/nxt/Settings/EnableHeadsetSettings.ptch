@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Enable headset settings in "Other settings"
+replaceinmethod "%smali%/com/android/settings/OtherPersonalSettings.smali" ".method public onCreate(Landroid/os/Bundle;)V" "if-nez v2, :cond_1" 	"if-nez v2, :cond_1  \n\n    if-eqz v2, :cond_1";

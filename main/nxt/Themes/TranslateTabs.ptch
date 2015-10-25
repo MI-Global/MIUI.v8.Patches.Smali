@@ -1,0 +1,5 @@
+appfile <ThemeManager.apk>;
+
+# Tabs translation
+replaceinfile "%smali%/miui/resourcebrowser/view/RecommendItemMultipleButtonFactory.smali" "invoke-virtual {p1}, Lmiui/resourcebrowser/model/RecommendItem;->getTitle()Ljava/lang/String;" "invoke-virtual {p1}, Lmiui/resourcebrowser/model/RecommendItem;->getTitle()Ljava/lang/String;\n\n    move-result-object v4\n\n    invoke-static {v4}, Lmiui/resourcebrowser/view/TranslateTabs;->getTranslatedTab(Ljava/lang/String;)Ljava/lang/String;";
+copyfile "%here%/smali/TranslateTabs.smali" "%smali%/miui/resourcebrowser/view/TranslateTabs.smali";

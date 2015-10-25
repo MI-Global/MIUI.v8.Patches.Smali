@@ -1,0 +1,4 @@
+appfile <ThemeManager.apk>;
+
+# Do not delete mtz-file after import
+replaceinfile "%smali%/miui/resourcebrowser/controller/local/ResourceImportService.smali" 			"invoke-virtual {v2}, Ljava/io/File;->delete()Z" 		"";

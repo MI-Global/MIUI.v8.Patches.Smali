@@ -1,7 +1,0 @@
-appfile <MiuiCamera.apk>;
-
-# Enable muting
-methodreplace "%smali%/com/android/camera/Device.smali" ".method public static isSupportedMuteCameraSound()Z" "%here%/MiuiCamera.apk/isSupportedMuteCameraSound.m";
-
-# Enable second storage
-methodreplace "%smali%/com/android/camera/Device.smali" ".method public static isSupportedSecondaryStorage()Z" "%here%/MiuiCamera.apk/isSupportedSecondaryStorage.m";

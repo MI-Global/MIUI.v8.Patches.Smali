@@ -1,0 +1,24 @@
+appfile <Services.jar>;
+
+# Smart Wake
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" 				".method private static wakefulnessToString(I)Ljava/lang/String;" 			"%here%/methods/wakefulnessToString.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" 				".method static synthetic access$3000(Lcom/android/server/power/PowerManagerService;)V" "%here%/methods/3000.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService$BootCompletedReceiver.smali" 	".method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V" 		"%here%/methods/onReceive.m";
+
+#########################################################################################################
+
+appfile <android.policy.jar>;
+
+# Smart Wake
+methodreplace "%smali%/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali" 	".method public interceptKeyBeforeQueueingInternal(Landroid/view/KeyEvent;IZ)I" "%here%/methods/interceptKeyBeforeQueueingInternal.m";
+
+# Add sendMediaButtonEvent method
+methodreplace "%smali%/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali" 	".method protected isInLockTaskMode()Z" 					"%here%/methods/sendMediaButtonEvent.m";
+
+#########################################################################################################
+
+appfile <Settings.apk>;
+
+# Add Smart Wake setting
+replaceinfile "%res%/xml/security_settings_common.xml"    				"</PreferenceCategory>\n    <PreferenceCategory" 										"<PreferenceScreen android:title="Smart Wake" android:key="smart_wake" android:summary="@string/smartwake_summary">\n            <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.SmartWake" />\n        </PreferenceScreen>\n    </PreferenceCategory>\n    <PreferenceCategory";
+# Do not forget to add Settings_Stocksettings.apk and add XML string patches

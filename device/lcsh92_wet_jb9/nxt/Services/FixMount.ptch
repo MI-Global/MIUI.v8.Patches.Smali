@@ -1,0 +1,4 @@
+appfile <Services.jar>;
+
+# Fix mounting
+copyfile "%here%/smali/MountService.smali" "%smali%/com/android/server/MountService.smali";

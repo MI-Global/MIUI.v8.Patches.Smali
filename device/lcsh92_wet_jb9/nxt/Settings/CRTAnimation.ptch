@@ -1,0 +1,20 @@
+appfile <Settings.apk>;
+
+# Add CRT animation setting
+replaceinfile "%smali%/com/android/settings/MiuiSecuritySettings.smali"    		"instance fields"																					"instance fields \n\n .field private mCrtLockscreen:Landroid/preference/CheckBoxPreference;";
+replaceinmethod "%smali%/com/android/settings/MiuiSecuritySettings.smali" 		".method public onResume()V" 																			"const-string v0, "screen_on_proximity_sensor" 											"const-string v0, "allow_crt_lockscreen"\n\n    invoke-virtual {p0, v0}, Lcom/android/settings/MiuiSecuritySettings;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;\n\n    move-result-object v0\n\n    check-cast v0, Landroid/preference/CheckBoxPreference;\n\n    iput-object v0, p0, Lcom/android/settings/MiuiSecuritySettings;->mCrtLockscreen:Landroid/preference/CheckBoxPreference;\n\n    const-string v0, "screen_on_proximity_sensor";
+replaceinmethod "%smali%/com/android/settings/MiuiSecuritySettings.smali" 		".method public onPreferenceTreeClick(Landroid/preference/PreferenceScreen;Landroid/preference/Preference;)Z" 	"if-ne p2, v2, :cond_1" 																"if-ne p2, v2, :cond_70";
+replaceinmethod "%smali%/com/android/settings/MiuiSecuritySettings.smali" 		".method public onPreferenceTreeClick(Landroid/preference/PreferenceScreen;Landroid/preference/Preference;)Z" 	"    :cond_1" 																		"    :cond_70\n\n    iget-object v2, p0, Lcom/android/settings/MiuiSecuritySettings;->mCrtLockscreen:Landroid/preference/CheckBoxPreference;\n\n    if-ne p2, v2, :cond_1\n\n    const-string v0, "true"\n\n    iget-object v4, p0, Lcom/android/settings/MiuiSecuritySettings;->mCrtLockscreen:Landroid/preference/CheckBoxPreference;\n\n    invoke-virtual {v4}, Landroid/preference/CheckBoxPreference;->isChecked()Z\n\n    move-result v4\n\n    if-nez v4, :cond_71\n\n    const-string v0, "false"\n\n    :cond_71\n\n    const-string v3, "persist.sys.crt.animation"\n\n    invoke-static {v3, v0}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V\n\n    goto :goto_0\n\n    :cond_1";
+replaceinfile "%res%/xml/security_settings_common.xml"    				"<CheckBoxPreference android:persistent="false" android:title="@string/lockpattern_settings" 					"<CheckBoxPreference android:title="@string/crt_animation" android:key="allow_crt_lockscreen" android:summary="@string/crt_summary" />\n       <CheckBoxPreference android:persistent="false" android:title="@string/lockpattern_settings";
+# Do not forget to add XML string patches
+
+########################################################################################################################
+appfile <Services.jar>;
+
+#Enable CRT animation on parameter persist.sys.crt.animation=true
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" 		"const-wide/16 v1, 0x0" "const-wide/16 v1, 0x190";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" 		".field private static final ELECTRON_BEAM_OFF_ANIMATION_DURATION_MILLIS:I = 0x0" 		".field private static final ELECTRON_BEAM_OFF_ANIMATION_DURATION_MILLIS:I = 0x190";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" 		"    :cond_27" 																			"    :cond_27\n    iget-object v6, p0, Lcom/android/server/power/DisplayPowerController;->mPowerState:Lcom/android/server/power/DisplayPowerState;";
+replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" 		"iget-object v6, p0, Lcom/android/server/power/DisplayPowerController;->mPowerState:Lcom/android/server/power/DisplayPowerState;\n\n    iget-boolean v8, p0, Lcom/android/server/power/DisplayPowerController;->mElectronBeamFadesConfig:Z\n\n    if-eqz v8, :cond_27" 		"const-string v8, "persist.sys.crt.animation"\n\n    const/4 v7, 0x0\n\n    const/4 v10, 0x0\n\n    invoke-static {v8, v10}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z\n\n    move-result v8\n\n    if-nez v8, :cond_27";
+
+

@@ -1,0 +1,6 @@
+appfile <Settings.apk>;
+
+# Add USB Storage
+replaceinfile "%smali%/com/android/settings/deviceinfo/MiuiUsbSettings.smali"    			"iput-boolean v1, p0, Lcom/android/settings/deviceinfo/MiuiUsbSettings;->"		"const/4 v1, 0x1 \n\n    iput-boolean v1, p0, Lcom/android/settings/deviceinfo/MiuiUsbSettings;->";
+replaceinfile "%smali%/com/android/settings/deviceinfo/MiuiUsbSettings.smali"    			"iput-boolean v0, p0, Lcom/android/settings/deviceinfo/MiuiUsbSettings;->"		"const/4 v0, 0x0 \n\n    iput-boolean v0, p0, Lcom/android/settings/deviceinfo/MiuiUsbSettings;->";
+replaceinfile "%res%/xml/device_info_memory.xml"    							"array/usb_connection_mode_values" />" 							"array/usb_connection_mode_values" /> \n        <PreferenceScreen android:title="@string/usb_connection_category" android:key="usb_select"> \n		    <intent android:targetPackage="com.android.settings" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings.UsbSettings"/> \n	    </PreferenceScreen>";

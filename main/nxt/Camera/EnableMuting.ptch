@@ -1,0 +1,4 @@
+appfile <MiuiCamera.apk>;
+
+# Enable muting
+methodreplace "%smali%/com/android/camera/Device.smali" ".method public static isSupportedMuteCameraSound()Z" "%here%/methods/isSupportedMuteCameraSound.m";
