@@ -1,0 +1,4 @@
+appfile <MiuiSystemUI.apk>;
+
+# Enabling/Disabling sound tone when changing volume (Lolipop)
+replaceinmethod "%smali%/com/android/systemui/volume/VolumePanel.smali" 			".method protected onPlaySound(II)V" 				".prologue" 					".prologue\n    iget-object v1, p0, Lmiui/view/VolumePanel;->mContext:Landroid/content/Context;\n    .local v1, "context":Landroid/content/Context;\n    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;\n    move-result-object v0\n    const-string v2, "volume_sounds"\n    const/4 v3, 0x0\n    invoke-static {v0, v2, v3}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I\n    move-result v3\n    if-eqz v3, :cond_20\n    return-void\n    :cond_20\n    .end local v1    # "context":Landroid/content/Context;";
