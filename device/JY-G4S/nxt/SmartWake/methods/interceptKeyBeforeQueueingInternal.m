@@ -818,7 +818,7 @@
 
     move-result-object v0
 
-    const-string v3, "input keyevent KEYCODE_ASSIST"
+    const-string v3, "am start -a android.speech.action.WEB_SEARCH -c android.intent.category.DEFAULT"
 
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
