@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Disable signatures comparation of system apps
 methodreplace "%smali%/com/android/server/pm/PackageManagerService.smali" ".method static compareSignatures([Landroid/content/pm/Signature;[Landroid/content/pm/Signature;)I" "%here%/methods/compareSignatures.m";

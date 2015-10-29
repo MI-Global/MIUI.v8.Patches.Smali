@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Fix apps nstall lcation
 replaceinmethod "%smali%/com/android/server/pm/PackageManagerService$InstallParams.smali" 	".method private installLocationPolicy(Landroid/content/pm/PackageInfoLite;I)I"		".prologue"		".prologue\n    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$InstallParams;->this$0:Lcom/android/server/pm/PackageManagerService;\n    iget-object v0, v0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;\n    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;\n    move-result-object v0\n    const-string v1, "default_install_location"\n    const/4 v2, 0x0\n    invoke-static {v0, v1, v2}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I\n    move-result v2\n    const/4 v4, 0x1\n    if-ne v4, v2, :cond_20\n    return v4\n    :cond_20";

@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Smart Wake
 methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" 				".method private static wakefulnessToString(I)Ljava/lang/String;" 			"%here%/methods/wakefulnessToString.m";

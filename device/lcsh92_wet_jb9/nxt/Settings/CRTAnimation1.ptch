@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 #Enable CRT animation on parameter persist.sys.crt.animation=true
 replaceinfile "%smali%/com/android/server/power/DisplayPowerController.smali" 		"const-wide/16 v1, 0x0" "const-wide/16 v1, 0x190";

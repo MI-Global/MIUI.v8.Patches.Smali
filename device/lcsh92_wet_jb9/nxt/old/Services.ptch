@@ -1,7 +1,7 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Fix mounting
-copyfile "%here%/Services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
+copyfile "%here%/services.jar/MountService.smali" "%smali%/com/android/server/MountService.smali";
 
 # Lower autobrightness delay time
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0xfa0L" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0x7d0L";
@@ -22,9 +22,9 @@ replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "cons
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "add-int/lit8 v6, v3, -0xa" "add-int/lit8 v6, v3, -0x1";
 
 # Smart Wake
-methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method private static wakefulnessToString(I)Ljava/lang/String;" "%here%/Services.jar/wakefulnessToString.m";
-methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method static synthetic access$3000(Lcom/android/server/power/PowerManagerService;)V" "%here%/Services.jar/3000.m";
-methodreplace "%smali%/com/android/server/power/PowerManagerService$BootCompletedReceiver.smali" ".method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V" "%here%/Services.jar/onReceive.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method private static wakefulnessToString(I)Ljava/lang/String;" "%here%/services.jar/wakefulnessToString.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService.smali" ".method static synthetic access$3000(Lcom/android/server/power/PowerManagerService;)V" "%here%/services.jar/3000.m";
+methodreplace "%smali%/com/android/server/power/PowerManagerService$BootCompletedReceiver.smali" ".method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V" "%here%/services.jar/onReceive.m";
 
 # Default installation to internal mamory #############
-#methodreplace "%smali%/com/android/server/pm/PackageManagerService.smali" ".method private static installOnSd(I)Z" "%here%/Services.jar/installOnSd.m";
+#methodreplace "%smali%/com/android/server/pm/PackageManagerService.smali" ".method private static installOnSd(I)Z" "%here%/services.jar/installOnSd.m";

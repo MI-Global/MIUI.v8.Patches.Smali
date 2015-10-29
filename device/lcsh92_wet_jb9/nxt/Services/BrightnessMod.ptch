@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Lower autobrightness delay time
 replaceinfile "%smali%/com/miui/server/power/DisplayPowerController.smali" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0xfa0L" "BRIGHTENING_LIGHT_DEBOUNCE:J = 0x7d0L";

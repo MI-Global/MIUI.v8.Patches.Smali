@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # LED color when charging. LED color is config_notificationsBatteryFullARGB in framework-res.apk/res/values/integers.xml
 copyfile "%here%/smali/BatteryService$Led.smali" "%smali%/com/android/server/BatteryService$Led.smali";

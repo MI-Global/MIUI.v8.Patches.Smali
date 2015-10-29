@@ -1,4 +1,4 @@
-appfile <Services.jar>;
+appfile <services.jar>;
 
 # Notification priority
 replaceinfile "%smali%/com/android/server/NotificationManagerService.smali" "const/16 v17, 0x4" "const/16 v17, 0x3";
