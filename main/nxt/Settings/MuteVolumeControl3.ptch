@@ -1,0 +1,4 @@
+appfile <framework-res.apk>;
+
+# Enabling/Disabling sound tone when changing volume
+replaceinfile "%res%/values/bools.xml" 			"<bool name="config_useVolumeKeySounds">false</bool>" 				"<bool name="config_useVolumeKeySounds">true</bool>";
