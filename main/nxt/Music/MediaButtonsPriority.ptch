@@ -2,9 +2,9 @@ appfile <Music.apk>;
 
 # Lower priority of MIUI Music MEDIA_BUTTONS intent
 
-# manifest "<intent-filter android:priority="1001">" "<intent-filter android:priority="100">";
+manifest "1001" "100";
 
-replaceinfile "%res%/../AndroidManifest.xml"	"1001" 	"100";
-delete "%res%/../original/AndroidManifest.xml";
+# replaceinfile "%res%/../AndroidManifest.xml"	"1001" 	"100";
+# delete "%res%/../original/AndroidManifest.xml";
 
 # Do not forget to add Music.apk to signfiles.conf
