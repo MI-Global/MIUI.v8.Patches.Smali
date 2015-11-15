@@ -4,7 +4,7 @@ appfile <Music.apk>;
 
 # manifest "<intent-filter android:priority="1001">" "<intent-filter android:priority="100">";
 
-replaceinfile "%res%/../AndroidManifest.xml"	"android:priority="1001" 	"android:priority="100";
+replaceinfile "%res%/../AndroidManifest.xml"	"1001" 	"100";
 delete "%res%/../original/AndroidManifest.xml";
 
 # Do not forget to add Music.apk to signfiles.conf
