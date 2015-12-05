@@ -1,0 +1,4 @@
+appfile <MiuiVideo.apk>;
+
+# International build 
+replaceinmethod "%smali%/com/miui/videoplayer/common/DuoKanConstants.smali" ".method private static isInternationalVersion()Z" "return v1" "const/4 v1, 0x1  \n  return v1";
