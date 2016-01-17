@@ -1,5 +1,0 @@
-appfile <android.policy.jar>;
-
-# Onscreen Buttons
-replaceinmethod "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali" ".method public setInitialDisplaySize(Landroid/view/Display;III)V" "Lcom/android/internal/policy/impl/PhoneWindowManager;->mNavigationBarCanMove:Z" "Lcom/android/internal/policy/impl/PhoneWindowManager;->mNavigationBarCanMove:Z\n\n    iget-object v4, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;\n\n    invoke-virtual {v4}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;\n\n    move-result-object v4\n\n    const-string v8, "enable_onscreen_buttons"\n\n    const/4 v0, 0x0\n\n    invoke-static {v4, v8, v0}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I\n\n    move-result v4\n\n    if-nez v4, :cond_77\n\n    goto :goto_50\n\n    :cond_77\n\n    move-object/from16 v0, p0\n\n    const/4 v4, 0x1\n\n    iput-boolean v4, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHasNavigationBar:Z\n\n    goto :goto_3\n\n    :goto_50\n";
-

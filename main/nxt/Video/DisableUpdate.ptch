@@ -1,0 +1,4 @@
+appfile <MiuiVideo.apk>;
+
+# Disable auto app update 
+methodreplace "%smali%/com/miui/videoplayer/cp/ExternalPackageUpdater.smali" 		".method public static checkNeedUpdate(Landroid/content/Context;Ljava/lang/String;I)Z" 		"%here%/methods/checkNeedUpdate.m";
