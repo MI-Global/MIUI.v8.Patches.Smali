@@ -1,0 +1,4 @@
+appfile <MiuiHome.apk>;
+
+replaceinfile "%res%/layout/recommend_container.xml" 	"layout_height="@dimen/editing_panel_height" 		"layout_height="0.0dip";
+replaceinfile "%res%/layout/recommend_header.xml" 	"layout_height="wrap_content" 					"layout_height="0.0dip";
