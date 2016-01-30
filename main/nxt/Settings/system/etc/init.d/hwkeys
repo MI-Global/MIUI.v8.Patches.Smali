@@ -6,11 +6,11 @@ then
    value=$(cat /data/property/persist.sys.mainkeys)
    if [ $value == "0" ];
    then
-       cp -f /system/usr/keylayout/hwkeys_off.kl /system/usr/keylayout/mtk-tpd.kl 
+       cp -f /system/usr/keylayout/hwkeys_off.kl /system/usr/keylayout/Generic.kl 
    else
-       cp -f /system/usr/keylayout/hwkeys_on.kl /system/usr/keylayout/mtk-tpd.kl 
+       cp -f /system/usr/keylayout/hwkeys_on.kl /system/usr/keylayout/Generic.kl 
    fi
 else
-       cp -f /system/usr/keylayout/hwkeys_on.kl /system/usr/keylayout/mtk-tpd.kl 
+       cp -f /system/usr/keylayout/hwkeys_on.kl /system/usr/keylayout/Generic.kl 
 fi
 mount -o ro,remount /system
