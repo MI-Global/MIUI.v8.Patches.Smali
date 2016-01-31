@@ -1,0 +1,7 @@
+appfile <CleanMaster.apk>;
+
+# Disable web
+replaceinfile "%smali%/com/miui/optimizecenter/result/DataModel.smali"    	"https://adv.sec.miui.com/info/layout" 		"127.0.0.1";
+
+# International build
+replaceinall 		"sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z \n    const/4 v0, 0x1";
