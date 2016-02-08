@@ -1,0 +1,4 @@
+appfile <MiuiHome.apk>;
+
+# Manually choose search app on UP-swipe
+replaceinmethod "%smali%/com/miui/home/launcher/Launcher.smali" 	".method public startSearch(Ljava/lang/String;ZLandroid/os/Bundle;Z)V" 		".prologue" 			".prologue \n    new-instance v0, Landroid/content/Intent;\n    const-string v1, "android.search.action.GLOBAL_SEARCH"\n    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V\n    const-string v1, "android.intent.category.DEFAULT"\n    invoke-virtual {v0, v1}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;\n    invoke-virtual {p0, v0}, Lcom/miui/home/launcher/Launcher;->startActivity(Landroid/content/Intent;)V\n    return-void";
