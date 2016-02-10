@@ -1,0 +1,4 @@
+appfile <android.policy.jar>;
+
+# Hide Nav Bar in lock screen
+replaceinmethod "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali" 		".method private canHideNavigationBar()Z"		"return v0"		"const/4 v0, 0x1 \n\n    return v0";
