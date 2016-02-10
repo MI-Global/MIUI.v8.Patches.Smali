@@ -648,17 +648,12 @@
     invoke-direct {v0, v1}, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->setTorch(Z)Z
 
     move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/internal/policy/impl/BaseMiuiPhoneWindowManager;->mContext:Landroid/content/Context;
-
-    new-instance v2, Landroid/content/Intent;
-
-    const-string v3, "android.intent.action.CAMERA_BUTTON"
-
-    invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
-
+    iget-object v0, v0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardDelegate:Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->dismiss()V
+    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
+    move-result-object v0
+    const-string v1, "am start -a android.media.action.STILL_IMAGE_CAMERA"
+    invoke-virtual {v0, v1}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
     const/4 v5, 0x1
 
     move-object/from16 v1, p0
@@ -712,7 +707,7 @@
 
     move-result-object v0
 
-    const-string v3, "input keyevent KEYCODE_CALL"
+    const-string v3, "am start -a android.intent.action.DIAL"
 
     invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;
 
