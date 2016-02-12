@@ -1,0 +1,4 @@
+appfile <framework.jar>;
+
+# Remove spaces before and after paste string
+replaceinmethod "%smali%/android/widget/TextView.smali" 	".method prepareSpacesAroundPaste(IILjava/lang/CharSequence;)J" "" "" """";
