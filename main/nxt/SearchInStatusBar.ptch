@@ -1,0 +1,4 @@
+appfile <MiuiSystemUI.apk>;
+
+# Search intent broadcast in statusbar
+replaceinmethod "%smali%/com/android/systemui/statusbar/SearchView.smali" 	".method private startSearchActivity()V" "dismissKeyguardOnNextActivity()V" "dismissKeyguardOnNextActivity()V \n\n    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;\n    move-result-object v0\n    const-string v1, "am start -a android.search.action.GLOBAL_SEARCH -c android.intent.category.DEFAULT"\n    invoke-virtual {v0, v1}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;\n    return-void";
