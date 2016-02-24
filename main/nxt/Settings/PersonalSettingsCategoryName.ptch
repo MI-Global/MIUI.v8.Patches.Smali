@@ -1,4 +1,6 @@
 appfile <Settings.apk>;
 
 # Personal settings category name
-replaceinfile "%res%/xml/settings_headers.xml" "<header android:id="@id/personal_section" />" "<header android:id="@id/personal_section" android:title="@string/header_category_personal" />";
+replaceinfile "%res%/xml/settings_headers.xml" "@id/space" />\n    <header android:icon="@drawable/ic_status_bar_settings" 		"@id/space" android:title="@string/header_category_personal" />\n    <header android:icon="@drawable/ic_status_bar_settings";
+replaceinfile "%res%/xml/settings_headers.xml" "@id/space" />\n    <header android:id="@id/manufacturer_settings" 		"@id/space" android:title="@string/notification_settings_apps_title" />\n    <header android:id="@id/manufacturer_settings";
+replaceinfile "%res%/xml/settings_headers.xml" "@id/space" />\n    <header android:icon="@drawable/ic_about_settings" 		"@id/space" android:title="@string/phone_info_label" />\n    <header android:icon="@drawable/ic_about_settings";

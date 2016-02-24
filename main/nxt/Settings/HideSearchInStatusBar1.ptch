@@ -1,0 +1,6 @@
+appfile <MiuiSystemUI.apk>;
+
+# Show/Hide search in notification panel in Settings
+replaceinmethod        "%smali%/com/android/systemui/statusbar/AppNotificationPanel.smali"    	".method protected onFinishInflate()V" 	"if-eqz v5, :cond_0"    "const-string v6, "persist.sys.showsearch"\n        const/4 v5, 0x1\n        invoke-static {v6, v5}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z\n        move-result v5\n        if-eqz v5, :cond_0";
+replaceinfile "%smali%/com/android/systemui/statusbar/phone/ExpandedHeaderView.smali" 	"iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/ExpandedHeaderView;->mShowSearch:Z"  		"const-string v0, "persist.sys.showsearch"\n        const/4 v1, 0x1\n        invoke-static {v0, v1}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z\n        move-result v0\n     iput-boolean v0, p0, Lcom/android/systemui/statusbar/phone/ExpandedHeaderView;->mShowSearch:Z";
+replaceinfile "%smali%/com/android/systemui/statusbar/SearchView.smali" 			"iput-boolean v0, p0, Lcom/android/systemui/statusbar/SearchView;->mShowSearch:Z"  		"const-string v0, "persist.sys.showsearch"\n        const/4 v1, 0x1\n        invoke-static {v0, v1}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z\n        move-result v0\n     iput-boolean v0, p0, Lcom/android/systemui/statusbar/SearchView;->mShowSearch:Z";
