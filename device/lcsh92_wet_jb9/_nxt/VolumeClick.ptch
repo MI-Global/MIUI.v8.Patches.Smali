@@ -1,0 +1,8 @@
+appfile <framework2.jar>;
+
+# Volume panel on short tap
+replaceinfile "%smali%/miui/view/VolumePanel.smali" 	"setOnLongClickListener" 	 						"setOnClickListener";
+replaceinfile "%smali%/miui/view/VolumePanel.smali" 	"View$OnLongClickListener"	 						"View$OnClickListener";
+replaceinfile "%smali%/miui/view/VolumePanel.smali" 	".method public onLongClick(Landroid/view/View;)Z" 		".method public onClick(Landroid/view/View;)V";
+replaceinfile "%smali%/miui/view/VolumePanel.smali" 	"const/4 v7, 0x1\n\n    return v7" 						"invoke-direct {p0}, Lmiui/view/VolumePanel;->forceTimeout()V\n\n    return-void";
+#replaceinfile "%smali%/miui/view/VolumePanel.smali" 	"Landroid/app/StatusBarManager;->collapsePanels()V" 	"Landroid/app/StatusBarManager;->collapsePanels()V\n    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;\n    move-result-object v0\n    const-string v3, "am start -a android.intent.action.MAIN -c android.intent.category.DEFAULT com.bormental.volumepanel"\n    invoke-virtual {v0, v3}, Ljava/lang/Runtime;->exec(Ljava/lang/String;)Ljava/lang/Process;\n    return-void";
