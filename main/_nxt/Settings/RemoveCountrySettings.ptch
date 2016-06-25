@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Remove country selection from settings
+replaceinfile "%res%/xml/other_personal_settings.xml"    		"<miui.preference.ValuePreference android:title="@string/locale_settings" android:key="locale_settings" android:fragment="com.android.settings.MiuiLocaleSettings" />"	"";
