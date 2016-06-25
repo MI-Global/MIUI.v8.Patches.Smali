@@ -1,0 +1,11 @@
+appfile <SecurityCenter.apk>;
+
+#Enable ROOT settings for global ROM
+replaceinfile "%smali%/com/miui/permcenter/MainAcitivty.smali" "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+replaceinfile "%smali%/com/miui/permcenter/autostart/AutoStartManagementActivity.smali" "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+replaceinall "const/4 v0, 0x2\n\n    iput v0, p0, Lcom/miui/permcenter/autostart/" "const/4 v0, 0x4\n\n    iput v0, p0, Lcom/miui/permcenter/autostart/";
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
+#replaceinall "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x0";
