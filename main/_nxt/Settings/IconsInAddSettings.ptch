@@ -19,5 +19,5 @@ replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:ti
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/display_settings" 			"<Preference android:icon="@drawable/ic_display_settings" android:title="@string/display_settings";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/screen_effect" 			"<Preference android:icon="@drawable/ic_ringer_volume_settings" android:title="@string/screen_effect";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/date_and_time_settings_title" 	"<Preference android:icon="@drawable/ic_date_time_settings" android:title="@string/date_and_time_settings_title";
-replaceinfile "%res%/xml/other_personal_settings.xml"    "<PreferenceScreen android:title="@string/onekey_migrate" 		"<PreferenceScreen android:icon="@drawable/com_miui_backup" android:title="@string/onekey_migrate";
+replaceinfile "%res%/xml/other_personal_settings.xml"    "<PreferenceScreen android:title="@string/onekey_migrate" 		"<PreferenceScreen android:icon="@drawable/ic_android_beam_settings" android:title="@string/onekey_migrate";
 #replaceinfile "%res%/xml/other_personal_settings.xml"    "com_miui_backup" 		"ic_bt_cellphone";
