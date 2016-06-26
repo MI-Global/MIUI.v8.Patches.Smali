@@ -7,3 +7,5 @@ replaceinall "com.xiaomi.market" "com.android.vending";
 replaceinall "%d.%dG" "%d.%d \u0413\u0431";
 replaceinall "%d.%dM" "%d.%d \u041c\u0431";
 replaceinall "%d.%dK" "%d.%d \u041a\u0431";
+# Browser will will be allways global
+replaceinall "const-string v1, "IS_INTERNATIONAL_BUILD"\n\n    const-string v2, "Z"\n\n    invoke-static {v0, v1, v2}, Lmiui/support/reflect/Field;->of(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;)Lmiui/support/reflect/Field;\n\n    move-result-object v1\n\n    const/4 v2, 0x0\n\n    invoke-virtual {v1, v2}, Lmiui/support/reflect/Field;->getBoolean(Ljava/lang/Object;)Z\n\n    move-result v1"  "const/4 v1, 0x1";
