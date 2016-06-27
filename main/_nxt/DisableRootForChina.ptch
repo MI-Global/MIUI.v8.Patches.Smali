@@ -1,0 +1,4 @@
+appfile <SecurityCenter.apk>;
+
+#Remove ROOT from security settings
+replaceinfile "%smali%/com/miui/permcenter/MainAcitivty.smali" "sget-boolean v0, Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v0, 0x1";
