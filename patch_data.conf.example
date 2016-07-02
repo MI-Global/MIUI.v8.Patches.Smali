@@ -3,9 +3,9 @@
 # This is an example of <jBART folder>/data/patches/patch_data.conf file 
 # To use this repo you must add the line:
 #
-# github::MI-Global/MIUI.v7.Patches.Smali=MI-Global .smali patches
+# github::MI-Global/MIUI.v8.Patches.Smali=MI-Global .smali patches
 #
-# to file <jBART folder>/data/settings/repo.miui.v7.patch.conf.
+# to file <jBART folder>/data/settings/repo.miui.v8.patch.conf.
 # In this case all patches will be downloaded each time.
 # If you want to remove some patches just comment or delete them in this list below.
 
