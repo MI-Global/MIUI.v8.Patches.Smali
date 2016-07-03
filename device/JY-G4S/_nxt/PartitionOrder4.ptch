@@ -1,5 +1,0 @@
-appfile <Settings.apk>;
-
-# Partition order in memory settiings
-replaceinfile "%smali%/com/android/settings/deviceinfo/MiuiMemory.smali" "instance fields" "instance fields \n .field private mPatritionOrder:Landroid/preference/ListPreference;";
-# Do not forget to add XML string and arrays patches
