@@ -1,0 +1,4 @@
+appfile <Settings.apk>;
+
+# Change or add new info about MIUI version
+replaceinfile "%smali%/com/android/settings/MiuiDeviceInfoSettings.smali"    "const-string v0, "MIUI 8 "" 		"const-string v0, "MIUI-Global 8 ""
