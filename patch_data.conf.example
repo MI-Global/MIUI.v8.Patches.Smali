@@ -55,6 +55,7 @@ include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/MuteVo
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/MuteVolumeControl2.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/MuteVolumeControl3.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/PersonalSettingsCategoryName.ptch";
+include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/ProximityAlways.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/OnscreenButtons.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Settings/OnscreenButtons1.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Themes/DoNotDeleteMtz.ptch";
