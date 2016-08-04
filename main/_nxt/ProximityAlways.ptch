@@ -3,5 +3,5 @@ appfile <InCallUI.apk>;
 # Enable in-call proximity sensor when using wired or bluetooth headset.
 replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"WIRED_HEADSET:I"	"SPEAKER:I";
 replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"BLUETOOTH:I"		"SPEAKER:I";
-replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"0x2\n\n    if-eq"	"0x8\n\n    if-eq";
-replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"0x4\n\n    if-eq"	"0x8\n\n    if-eq";
+replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"0x2\n\n    if-eq"	"0x3\n\n    if-eq";
+replaceinfile "%smali%/com/android/incallui/ProximitySensor.smali" 		"0x4\n\n    if-eq"	"0x3\n\n    if-eq";
