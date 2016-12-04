@@ -1,3 +1,3 @@
 appfile <QuickSearchBox.apk>;
 
-replaceinall "IS_INTERNATIONAL_BUILD" 	"IS_XIAOMI";
+replaceinall "IS_INTERNATIONAL_BUILD" 	"IS_DEVELOPMENT_VERSION";
