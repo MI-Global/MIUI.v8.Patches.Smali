@@ -1,0 +1,5 @@
+appfile <android.policy.jar>;
+
+# Onscreen Buttons
+replaceinfile "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali" 		"qemu.hw.mainkeys" 					"persist.sys.mainkeys";
+#methodreplace "%smali%/com/android/internal/policy/impl/PhoneWindowManager.smali"		".method public hasNavigationBar()Z"		"%here%/methods/hasNavigationBar.m";
