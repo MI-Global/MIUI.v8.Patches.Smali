@@ -1,5 +1,5 @@
 appfile <Settings.apk>;
 
 # Add Smart Wake setting
-replaceinfile "%res%/xml/security_settings_common.xml"    				"</PreferenceCategory>\n    <PreferenceCategory" 										"<PreferenceScreen android:title="Smart Wake" android:key="smart_wake" android:summary="@string/smartwake_summary">\n            <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.SmartWake" />\n        </PreferenceScreen>\n    </PreferenceCategory>\n    <PreferenceCategory";
+replaceinfile "%res%/xml/security_settings_common.xml"    				"<CheckBoxPreference android:title="@string/pref_volume_wake_title" 										"<PreferenceScreen android:title="Smart Wake" android:key="smart_wake" android:summary="@string/smartwake_summary">\n            <intent android:targetPackage="com.bormental.stocksettings" android:action="android.intent.action.MAIN" android:targetClass="com.bormental.stocksettings.SmartWake" />\n        </PreferenceScreen>\n    <CheckBoxPreference android:title="@string/pref_volume_wake_title";
 # Do not forget to add Settings_Stocksettings.apk and add XML string patches
