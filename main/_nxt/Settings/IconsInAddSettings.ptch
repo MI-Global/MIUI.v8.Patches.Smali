@@ -3,8 +3,8 @@ appfile <Settings.apk>;
 # Display icons in additional settings
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/security_privacy_settings_title" 	"<Preference android:icon="@drawable/ic_security_settings" android:title="@string/security_privacy_settings_title";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/language_settings" 		"<Preference android:icon="@drawable/ic_font_settings" android:title="@string/language_settings";
-replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/children_mode_title" 			"<Preference android:icon="@drawable/ic_children_mode_settings" android:title="@string/children_mode_title";
-replaceinfile "%res%/xml/other_personal_settings.xml"    "<PreferenceScreen android:title="@string/touch_assistant" 			"<PreferenceScreen android:icon="@drawable/ic_bt_misc_hid" android:title="@string/touch_assistant";
+replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/children_mode_title" 		"<Preference android:icon="@drawable/ic_children_mode_settings" android:title="@string/children_mode_title";
+replaceinfile "%res%/xml/other_personal_settings.xml"    "<PreferenceScreen android:title="@string/touch_assistant" 		"<PreferenceScreen android:icon="@drawable/ic_bt_misc_hid" android:title="@string/touch_assistant";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/title_font" 			"<Preference android:icon="@drawable/com_miui_notes" android:title="@string/title_font";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/handy_mode" 			"<Preference android:icon="@drawable/ic_accelerometer_settings" android:title="@string/handy_mode";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/print_settings" 			"<Preference android:icon="@drawable/ic_bt_imaging" android:title="@string/print_settings";
@@ -20,4 +20,5 @@ replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:ti
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/screen_effect" 			"<Preference android:icon="@drawable/ic_ringer_volume_settings" android:title="@string/screen_effect";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/date_and_time_settings_title" 	"<Preference android:icon="@drawable/ic_date_time_settings" android:title="@string/date_and_time_settings_title";
 replaceinfile "%res%/xml/other_personal_settings.xml"    "<PreferenceScreen android:title="@string/onekey_migrate" 		"<PreferenceScreen android:icon="@drawable/ic_android_beam_settings" android:title="@string/onekey_migrate";
-#replaceinfile "%res%/xml/other_personal_settings.xml"    "com_miui_backup" 		"ic_bt_cellphone";
+replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/application_lock_name" 		"<Preference android:icon="@drawable/ic_bt_keyboard_hid" android:title="@string/application_lock_name";
+replaceinfile "%res%/xml/other_personal_settings.xml"    "<Preference android:title="@string/screenshot" 			"<Preference android:icon="@drawable/ic_bt_cellphone" android:title="@string/screenshot";
