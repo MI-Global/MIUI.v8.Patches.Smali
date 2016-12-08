@@ -2,7 +2,7 @@ appfile <MiuiKeyguard.apk>;
 
 # Adding swype right to phone
 
-replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerLeftAction()V" ".prologue" ".prologue\n    const/4 v0, 0x0\n    iput-boolean v0, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mDefaultLeftAction:Z;";
+replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" 	".method private triggerLeftAction()V" 		".prologue" 		".prologue\n    const/4 v0, 0x0\n    iput-boolean v0, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mDefaultLeftAction:Z";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "com.xiaomi.smarthome" "com.android.contacts";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "miio.activity.ClientAllLockedActivity" "activities.TwelveKeyDialer";
 
