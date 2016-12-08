@@ -1,0 +1,4 @@
+appfile <DownloadProviderUi.apk>;
+
+replaceinall "IS_INTERNATIONAL_BUILD" 	"IS_DEVELOPMENT_VERSION";
+replaceinall "IS_STABLE_VERSION" 	"IS_DEVELOPMENT_VERSION";
