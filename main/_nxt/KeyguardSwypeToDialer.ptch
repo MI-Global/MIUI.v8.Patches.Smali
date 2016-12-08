@@ -1,7 +1,11 @@
 appfile <MiuiKeyguard.apk>;
 
 # Adding swype right to phone
-replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerStartRemoteCenterAction()V" ".prologue" ".prologue\n\n    iget-object v6, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mKeyguardScreenCallback:Lcom/android/keyguard/MiuiKeyguardScreenCallback;\n\n    invoke-interface {v6}, Lcom/android/keyguard/MiuiKeyguardScreenCallback;->goToUnlockScreen()V";
+
+replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerLeftAction()V" ".prologue" ".prologue\n    const/4 v0, 0x0\n    iput-boolean v0, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mDefaultLeftAction:Z;";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "com.xiaomi.smarthome" "com.android.contacts";
 replaceinfile "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" "miio.activity.ClientAllLockedActivity" "activities.TwelveKeyDialer";
-replaceinfile "%res%/values/strings.xml" "Mi Remote" "Dialer";
+
+#replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerLeftAction()V" "iget-boolean v2, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mDefaultLeftAction:Z" "const/4 v2, 0x0\n    iget-boolean v2, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mDefaultLeftAction:Z";
+#replaceinmethod "%smali%/com/android/keyguard/MiuiDefaultLockScreen.smali" ".method private triggerStartRemoteCenterAction()V" ".prologue" ".prologue\n\n    iget-object v6, p0, Lcom/android/keyguard/MiuiDefaultLockScreen;->mKeyguardScreenCallback:Lcom/android/keyguard/MiuiKeyguardScreenCallback;\n\n    invoke-interface {v6}, Lcom/android/keyguard/MiuiKeyguardScreenCallback;->goToUnlockScreen()V";
+#replaceinfile "%res%/values/strings.xml" "Mi Remote" "Dialer";

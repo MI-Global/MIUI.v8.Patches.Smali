@@ -1,8 +1,10 @@
 appfile <Music.apk>;
 
-# International codepage
-replaceinmethod "%smali%/com/miui/player/scanner/FileScannerImpl$MyFileScannerClient.smali" ".method private detectAndNewString([B)Ljava/lang/String;" "if-eqz v3, :cond_1" "";
-replaceinfile "%smali%/com/xiaomi/music/util/Build.smali" "sput-boolean v2, Lcom/xiaomi/music/util/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v2, 0x1\n\n    sput-boolean v2, Lcom/xiaomi/music/util/Build;->IS_INTERNATIONAL_BUILD:Z";
-replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "https://m.baidu.com/s?from=1012852v&word=" "https://play.google.com/store/search?c=music&q=";
-replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "invoke-virtual {v0, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;" "";
-replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;" "";
+# International interface for developer builds
+replaceinall "IS_INTERNATIONAL_BUILD" "IS_DEVELOPMENT_VERSION";
+
+#replaceinmethod "%smali%/com/miui/player/scanner/FileScannerImpl$MyFileScannerClient.smali" ".method private detectAndNewString([B)Ljava/lang/String;" "if-eqz v3, :cond_1" "";
+#replaceinfile "%smali%/com/xiaomi/music/util/Build.smali" "sput-boolean v2, Lcom/xiaomi/music/util/Build;->IS_INTERNATIONAL_BUILD:Z" "const/4 v2, 0x1\n\n    sput-boolean v2, Lcom/xiaomi/music/util/Build;->IS_INTERNATIONAL_BUILD:Z";
+#replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "https://m.baidu.com/s?from=1012852v&word=" "https://play.google.com/store/search?c=music&q=";
+#replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "invoke-virtual {v0, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;" "";
+#replaceinfile "%smali%/com/miui/player/phone/view/RadarResultLayout.smali" "invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;" "";
