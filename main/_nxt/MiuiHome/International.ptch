@@ -1,4 +1,0 @@
-appfile <MiuiHome.apk>;
-
-# International for developer builds
-replaceinall "IS_INTERNATIONAL_BUILD" 	"IS_DEVELOPMENT_VERSION";
