@@ -1,4 +1,4 @@
 appfile <MiuiSystemUI.apk>;
 
 # Enabling/Disabling sound when charger plug on "persist.sys.charge.sound" in build.prop
-methodreplace "%smali%/com/android/systemui/power/PowerUI.smali" ".method playBatterySound(Landroid/net/Uri;)V" "%here%/methods/playBatterySound.m";
+replaceinmethod "%smali%/com/android/systemui/power/PowerUI.smali" ".method playBatterySound(Landroid/net/Uri;)V" ".prologue" ".prologue\n    const-string v0, "persist.sys.charge.sound"\n    const/4 v1, 0x0\n    invoke-static {v0, v1}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z\n    move-result v1\n    if-nez v1, :go_play\n    return-void\n    :go_play";
