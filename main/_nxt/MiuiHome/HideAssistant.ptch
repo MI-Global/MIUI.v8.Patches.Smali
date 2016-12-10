@@ -1,4 +1,4 @@
 appfile <MiuiHome.apk>;
 
 # Hide Chinese assistant for developer builds
-replaceinmethod "com/miui/home/launcher/DeviceConfig.smali"  		".method public static needHideMinusScreen()Z" 		".prologue" 		".prologue\n    const/4 v0, 0x1\n    return v0";
+replaceinmethod "%smali%/com/miui/home/launcher/DeviceConfig.smali"  		".method public static needHideMinusScreen()Z" 		".prologue" 		".prologue\n    const/4 v0, 0x1\n    return v0";
