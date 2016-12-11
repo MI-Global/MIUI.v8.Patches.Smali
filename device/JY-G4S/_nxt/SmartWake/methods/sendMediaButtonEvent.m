@@ -55,4 +55,42 @@
     invoke-virtual {v4, v12, v5}, Landroid/content/Context;->sendOrderedBroadcast(Landroid/content/Intent;Ljava/lang/String;)V
     return-void
 .end method
+
+.method private isInCallScreenShowing()Z
+    .locals 6
+
+    .prologue
+    const/4 v4, 0x1
+    const/4 v3, 0x0
+    iget-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mContext:Landroid/content/Context;
+    const-string v5, "activity"
+    invoke-virtual {v2, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    move-result-object v0
+    check-cast v0, Landroid/app/ActivityManager;
+    .local v0, "activityManager":Landroid/app/ActivityManager;
+    invoke-virtual {v0, v4}, Landroid/app/ActivityManager;->getRunningTasks(I)Ljava/util/List;
+    move-result-object v2
+    invoke-interface {v2, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    move-result-object v2
+    check-cast v2, Landroid/app/ActivityManager$RunningTaskInfo;
+    iget-object v2, v2, Landroid/app/ActivityManager$RunningTaskInfo;->topActivity:Landroid/content/ComponentName;
+    invoke-virtual {v2}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+    move-result-object v1
+    .local v1, "runningActivity":Ljava/lang/String;
+    const-string v2, "com.android.phone.MiuiInCallScreen"
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v2
+    if-nez v2, :cond_0
+    const-string v2, "com.android.incallui.InCallActivity"
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v2
+    if-eqz v2, :cond_1
+    :cond_0
+    move v2, v4
+    :goto_0
+    return v2
+    :cond_1
+    move v2, v3
+    goto :goto_0
+.end method
 ##########################################################
