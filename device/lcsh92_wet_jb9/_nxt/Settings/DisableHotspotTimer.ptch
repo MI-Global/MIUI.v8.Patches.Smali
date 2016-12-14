@@ -1,4 +1,5 @@
 appfile <Settings.apk>;
 
 # Disable WiFi Hotspot timer
+replaceinmethod "%smali%/com/android/settings/MiuiTetherSettings.smali" 		".method public onCreate(Landroid/os/Bundle;)V" 			".prologue" 		".prologue\n\n    invoke-virtual {p0}, Lcom/android/settings/TetherSettings;->getContentResolver()Landroid/content/ContentResolver;\n\n    move-result-object v0\n\n    const-string/jumbo v1, "wifi_hotspot_auto_disable"\n\n    const/4 v2, 0x0\n\n    invoke-static {v0, v1, v2}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z";
 replaceinmethod "%smali%/com/android/settings/TetherSettings.smali" 		".method public onCreate(Landroid/os/Bundle;)V" 			".prologue" 		".prologue\n\n    invoke-virtual {p0}, Lcom/android/settings/TetherSettings;->getContentResolver()Landroid/content/ContentResolver;\n\n    move-result-object v0\n\n    const-string/jumbo v1, "wifi_hotspot_auto_disable"\n\n    const/4 v2, 0x0\n\n    invoke-static {v0, v1, v2}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z";
