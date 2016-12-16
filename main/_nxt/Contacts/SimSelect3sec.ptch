@@ -1,0 +1,4 @@
+appfile <TeleService.apk>;
+
+# 3 sec timeout to select SIM card on outgoing call
+replaceinfile "%smali%/com/android/phone/SimCardPickDialog.smali" "0x5" "0x3";
