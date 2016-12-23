@@ -1,4 +1,7 @@
 appfile <services.jar>;
 
 # Notification priority
-replaceinfile "%smali%/com/android/server/NotificationManagerService.smali" "const/16 v17, 0x4" "const/16 v17, 0x3";
+replaceinfile "%smali%/com/android/server/NotificationManagerService.smali" "0x4\n\n    move-object/from16 v0, p3" "0x3\n\n    move-object/from16 v0, p3";
+replaceinfile "%smali%/com/android/server/BatteryService$Led.smali" "0x3" "0x4";
+replaceinmethod "%smali%/com/android/server/MiuiLightsService$Light.smali" ".method setLightLocked(IIIII)V" ", 0x3" ",  0x4";
+replaceinmethod "%smali%/com/android/server/MiuiLightsService$Light.smali" ".method setLightLocked(IIIII)V" ", 0x4" ",  0x3";
