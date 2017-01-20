@@ -63,6 +63,7 @@ include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Themes/Translat
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Video/DisableOnline.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Video/InternationalBuild.ptch";
 include "%patches_dir%/../../_temp/repositories/patches/main/nxt/Video/DisableUpdate.ptch";
+include "%patches_dir%/../../_temp/repositories/patches/main/nxt/XiaomiAccount.ptch";
 
 # Patches for device lcsh92_wet_jb9 (and all phones with MTK6592 as lcsh92_wet_jb9 is their parent)
 #include "%patches_dir%/../../_temp/repositories/patches/device/lcsh92_wet_jb9/nxt/Camera/EnableSecondStorage.ptch";

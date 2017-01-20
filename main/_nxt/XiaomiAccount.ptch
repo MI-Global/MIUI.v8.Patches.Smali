@@ -1,0 +1,4 @@
+appfile <XiaomiAccount.apk>;
+
+#Remove Mi Home from Xiaomi Account
+replaceinfile "%res%/xml/account_settings_preference" "<com.xiaomi.account.ui.AccountValuePreference android:icon="@drawable/icon_mi_family" android:title="@string/mi_family" android:key="pref_mi_family_service" />" "";
